@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: d3adb5/build-qmk-fw@v1
+      - uses: medoix/build-qmk-fw@v1
         with:
           keyboard: draculad
           keymap: default
@@ -29,7 +29,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: d3adb5/build-qmk-fw@v1
+      - uses: medoix/build-qmk-fw@v1
         with:
           keyboard: draculad
           keymap: via
