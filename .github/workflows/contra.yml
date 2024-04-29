@@ -17,10 +17,10 @@ jobs:
         with:
           keyboard: contra
           keymap: default
-          output-dir: contra-default
+          output-dir: contra
       - uses: sylvanld/action-storage@v1
         with:
-          src: contra-default
+          src: contra
           dst: ./
           storage-branch: main
 
@@ -33,10 +33,10 @@ jobs:
         with:
           keyboard: contra
           keymap: via
-          output-dir: contra-via
+          output-dir: contra
       - uses: sylvanld/action-storage@v1
         with:
-          src: contra-via
+          src: contra
           dst: ./
           storage-branch: main
 
@@ -50,10 +50,10 @@ jobs:
           keyboard: contra
           keymap: default
           controller: helios
-          output-dir: contra-default-helios
+          output-dir: contra
       - uses: sylvanld/action-storage@v1
         with:
-          src: contra-default-helios
+          src: contra
           dst: ./
           storage-branch: main
 
@@ -67,9 +67,9 @@ jobs:
           keyboard: contra
           keymap: via
           controller: helios
-          output-dir: contra-via-helios
+          output-dir: contra
       - uses: sylvanld/action-storage@v1
         with:
-          src: contra-via-helios
+          src: contra
           dst: ./
           storage-branch: main
