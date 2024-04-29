@@ -16,9 +16,10 @@ jobs:
       with:
         keyboard: crkbd/rev1
         keymap: default
+        output-dir: ./
     - uses: sylvanld/action-storage@v1
       with:
-        src: qmk-output
+        src: ./*
         dst: ./
         storage-branch: main
 
