@@ -1,4 +1,4 @@
-name: "QMK Firmware Cantor"
+name: "Cantor Firmware"
 
 on:
   push:
