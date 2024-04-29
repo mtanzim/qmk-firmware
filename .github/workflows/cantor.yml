@@ -17,9 +17,9 @@ jobs:
         with:
           keyboard: cantor
           keymap: default
-          output-dir: cantor-default
+          output-dir: cantor
       - uses: sylvanld/action-storage@v1
         with:
-          src: cantor-default
+          src: cantor
           dst: ./
           storage-branch: main

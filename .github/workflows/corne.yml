@@ -17,10 +17,10 @@ jobs:
         with:
           keyboard: crkbd/rev1
           keymap: default
-          output-dir: corne-default
+          output-dir: corne
       - uses: sylvanld/action-storage@v1
         with:
-          src: corne-default
+          src: corne
           dst: ./
           storage-branch: main
 
@@ -33,10 +33,10 @@ jobs:
         with:
           keyboard: crkbd/rev1
           keymap: via
-          output-dir: corne-via
+          output-dir: corne
       - uses: sylvanld/action-storage@v1
         with:
-          src: corne-via
+          src: corne
           dst: ./
           storage-branch: main
 
@@ -50,11 +50,11 @@ jobs:
           keyboard: crkbd/rev1
           keymap: default
           controller: helios
-          output-dir: corne-default-helios
+          output-dir: corne
 
       - uses: sylvanld/action-storage@v1
         with:
-          src: corne-default-helios
+          src: corne
           dst: ./
           storage-branch: main
 
@@ -68,10 +68,10 @@ jobs:
           keyboard: crkbd/rev1
           keymap: via
           controller: helios
-          output-dir: corne-via-helios
+          output-dir: corne
 
       - uses: sylvanld/action-storage@v1
         with:
-          src: corne-via-helios
+          src: corne
           dst: ./
           storage-branch: main
