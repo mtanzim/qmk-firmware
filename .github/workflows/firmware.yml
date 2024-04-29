@@ -18,8 +18,8 @@ jobs:
         keymap: default
     - uses: sylvanld/action-storage@v1
       with:
-        src: built-images
-        dst: corne/
+        src: qmk-output
+        dst: ./
         storage-branch: main
 
 #   corne-via:
