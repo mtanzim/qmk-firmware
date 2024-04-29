@@ -1,0 +1,41 @@
+name: "Discipad Firmware"
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/discipad.yml
+
+jobs:
+  discipad-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: d3adb5/build-qmk-fw@v1
+        with:
+          keyboard: coseyfannitutti/discipad
+          keymap: default
+          output-dir: discipad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: discipad
+          dst: ./
+          storage-branch: main
+
+  discipad-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: d3adb5/build-qmk-fw@v1
+        with:
+          keyboard: coseyfannitutti/discipad
+          keymap: via
+          output-dir: discipad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: discipad
+          dst: ./
+          storage-branch: main
