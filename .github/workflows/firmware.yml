@@ -3,7 +3,7 @@ name: "QMK Firmware Files"
 on:
   push:
     branches:
-      - master
+      - main
   pull_request: {}
 
 jobs:
