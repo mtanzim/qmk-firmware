@@ -6,6 +6,7 @@ on:
     - main
     paths:
     - .github/workflows/draculad.yml
+    - draculad/keymaps/**
 
 jobs:
   draculad-default:
