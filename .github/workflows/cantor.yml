@@ -1,0 +1,25 @@
+name: "QMK Firmware Cantor"
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - /**/cantor.yml
+
+jobs:
+  cantor-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: d3adb5/build-qmk-fw@v1
+        with:
+          keyboard: cantor
+          keymap: default
+          output-dir: cantor-default
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: cantor-default
+          dst: ./
+          storage-branch: main
