@@ -39,3 +39,37 @@ jobs:
           src: contra-via
           dst: ./
           storage-branch: main
+
+  contra-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: d3adb5/build-qmk-fw@v1
+        with:
+          keyboard: contra
+          keymap: default
+          controller: helios
+          output-dir: contra-default-helios
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: contra-default-helios
+          dst: ./
+          storage-branch: main
+
+  contra-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: d3adb5/build-qmk-fw@v1
+        with:
+          keyboard: contra
+          keymap: via
+          controller: helios
+          output-dir: contra-via-helios
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: contra-via-helios
+          dst: ./
+          storage-branch: main
