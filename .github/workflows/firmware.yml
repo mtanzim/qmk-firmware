@@ -11,33 +11,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: d3adb5/build-qmk-fw@v1
-      with:
-        keyboard: cantor
-        keymap: default
-        output-dir: cantor-default
-    - uses: sylvanld/action-storage@v1
-      with:
-        src: cantor-default
-        dst: ./
-        storage-branch: main
+      - uses: actions/checkout@v4
+      - uses: d3adb5/build-qmk-fw@v1
+        with:
+          keyboard: cantor
+          keymap: default
+          output-dir: cantor-default
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: cantor-default
+          dst: ./
+          storage-branch: main
 
   contra-default:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: d3adb5/build-qmk-fw@v1
-      with:
-        keyboard: contra
-        keymap: default
-        output-dir: contra-default
-    - uses: sylvanld/action-storage@v1
-      with:
-        src: contra-default
-        dst: ./
-        storage-branch: main
+      - uses: actions/checkout@v4
+      - uses: d3adb5/build-qmk-fw@v1
+        with:
+          keyboard: contra
+          keymap: default
+          output-dir: contra-default
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: contra-default
+          dst: ./
+          storage-branch: main
 
   contra-via:
     runs-on: ubuntu-latest
@@ -59,17 +59,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: d3adb5/build-qmk-fw@v1
-      with:
-        keyboard: crkbd/rev1
-        keymap: default
-        output-dir: corne-default
-    - uses: sylvanld/action-storage@v1
-      with:
-        src: corne-default
-        dst: ./
-        storage-branch: main
+      - uses: actions/checkout@v4
+      - uses: d3adb5/build-qmk-fw@v1
+        with:
+          keyboard: crkbd/rev1
+          keymap: default
+          output-dir: corne-default
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: corne-default
+          dst: ./
+          storage-branch: main
 
   corne-via:
     runs-on: ubuntu-latest
