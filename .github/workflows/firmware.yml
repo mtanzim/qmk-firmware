@@ -16,17 +16,11 @@ jobs:
       with:
         keyboard: crkbd/rev1
         keymap: default
-        output-dir: qmk-firmware-to-be-flashed
-    - uses: d3adb5/build-qmk-fw@v1
+    - uses: sylvanld/action-storage@v1
       with:
-        keyboard: crkbd/rev1
-        keymap: via
-        output-dir: qmk-firmware-to-be-flashed
-
-    - uses: actions/upload-artifact@v4
-      with:
-        name: corne
-        path: qmk-firmware-to-be-flashed
+        src: crkbd_rev1_default.hex
+        dst: corne/corne_rev1_default.hex
+        storage-branch: main
 
 #   corne-via:
 #     runs-on: ubuntu-latest
