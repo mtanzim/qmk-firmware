@@ -1,0 +1,42 @@
+name: "ChocV Firmware"
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/chocv.yml
+
+jobs:
+  chocv-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: d3adb5/build-qmk-fw@v1
+        with:
+          keyboard: chocv
+          keymap: default
+          output-dir: chocv
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: chocv
+          dst: ./
+          storage-branch: main
+
+  chocv-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: d3adb5/build-qmk-fw@v1
+        with:
+          keyboard: chocv
+          keymap: default
+          controller: helios
+          output-dir: chocv
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: chocv
+          dst: ./
+          storage-branch: main
