@@ -13,7 +13,7 @@
   * You should have received a copy of the GNU General Public License 
   * along with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */  
-  #pragma once
+#pragma once
 
 
 //#define USE_MATRIX_I2C
@@ -71,7 +71,7 @@
 	
     #define RGBLED_NUM 70
 	//#define RGBLED_SPLIT
-	//#define RGBLED_SPLIT { 35, 35 } // haven't figured out how to use this yet 
+	#define RGBLED_SPLIT { 35, 35 } // haven't figured out how to use this yet 
 	
 	//#define RGBLED_NUM 30
     #define RGBLIGHT_LIMIT_VAL 120
