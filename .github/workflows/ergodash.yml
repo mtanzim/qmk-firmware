@@ -1,0 +1,79 @@
+name: "Ergodash Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/ergodash.yml
+    - ergodash/keymaps/**
+
+jobs:
+  ergodash-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: omkbd/ergodash/rev1
+          keymap: default
+          output-dir: ergodash
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: ergodash
+          dst: ./
+          storage-branch: main
+
+  ergodash-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: omkbd/ergodash/rev1
+          keymap: via
+          output-dir: ergodash
+          local-keymap-path: ergodash/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: ergodash
+          dst: ./
+          storage-branch: main
+
+  ergodash-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: omkbd/ergodash/rev1
+          keymap: default
+          controller: helios
+          output-dir: ergodash
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: ergodash
+          dst: ./
+          storage-branch: main
+
+  ergodash-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: omkbd/ergodash/rev1
+          keymap: via
+          controller: helios
+          output-dir: ergodash
+          local-keymap-path: ergodash/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: ergodash
+          dst: ./
+          storage-branch: main
