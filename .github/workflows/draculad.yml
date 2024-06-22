@@ -1,6 +1,7 @@
 name: "Draculad Firmware"
 
 on:
+  workflow_dispatch:
   push:
     branches:
     - main

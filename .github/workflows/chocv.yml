@@ -1,6 +1,7 @@
 name: "ChocV Firmware"
 
 on:
+  workflow_dispatch:
   push:
     branches:
     - main
@@ -13,7 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: d3adb5/build-qmk-fw@v1
+      - uses: medoix/build-qmk-fw@v1
         with:
           keyboard: chocv
           keymap: default
@@ -29,7 +30,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: d3adb5/build-qmk-fw@v1
+      - uses: medoix/build-qmk-fw@v1
         with:
           keyboard: chocv
           keymap: default
