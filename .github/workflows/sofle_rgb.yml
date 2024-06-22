@@ -33,15 +33,16 @@ jobs:
       - uses: medoix/build-qmk-fw@v1
         with:
           keyboard: sofle
-          keymap: via
+          keymap: rgb_via
           output-dir: sofle_rgb
+          local-keymap-path: sofle_rgb/keymaps/rgb_via
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle_rgb
           dst: ./
           storage-branch: main
 
-  ssofle_rgbofle-default-helios:
+  ssofle_rgb-default-helios:
     runs-on: ubuntu-latest
 
     steps:
@@ -66,9 +67,10 @@ jobs:
       - uses: medoix/build-qmk-fw@v1
         with:
           keyboard: sofle
-          keymap: via
+          keymap: rgb_via
           controller: helios
           output-dir: sofle_rgb
+          local-keymap-path: sofle_rgb/keymaps/rgb_via
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle_rgb
