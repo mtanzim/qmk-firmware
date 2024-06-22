@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: marksard/rhymestone/rev1
+          keyboard: marksard/rhymestone
           keymap: default
           output-dir: rhymestone
       - uses: sylvanld/action-storage@v1
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: marksard/rhymestone/rev1
+          keyboard: marksard/rhymestone
           keymap: via
           output-dir: rhymestone
           local-keymap-path: rhymestone/keymaps/via
@@ -50,7 +50,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: marksard/rhymestone/rev1
+          keyboard: marksard/rhymestone
           keymap: default
           controller: helios
           output-dir: rhymestone
@@ -67,7 +67,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: marksard/rhymestone/rev1
+          keyboard: marksard/rhymestone
           keymap: via
           controller: helios
           output-dir: rhymestone
