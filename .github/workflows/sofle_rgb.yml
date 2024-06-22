@@ -1,0 +1,76 @@
+name: "Sofle RGB Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/sofle_rgb.yml
+
+jobs:
+  sofle_rgb-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: sofle
+          keymap: rgb_default
+          output-dir: sofle_rgb
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle_rgb
+          dst: ./
+          storage-branch: main
+
+  sofle_rgb-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: sofle
+          keymap: via
+          output-dir: sofle_rgb
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle_rgb
+          dst: ./
+          storage-branch: main
+
+  ssofle_rgbofle-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: sofle
+          keymap: rgb_default
+          controller: helios
+          output-dir: sofle_rgb
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle_rgb
+          dst: ./
+          storage-branch: main
+
+  sofle_rgb-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: sofle
+          keymap: via
+          controller: helios
+          output-dir: sofle_rgb
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle_rgb
+          dst: ./
+          storage-branch: main
