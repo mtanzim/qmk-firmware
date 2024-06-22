@@ -42,3 +42,38 @@ jobs:
           src: draculad
           dst: ./
           storage-branch: main
+
+  draculad-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: draculad
+          keymap: default
+          controller: helios
+          output-dir: draculad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: draculad
+          dst: ./
+          storage-branch: main
+
+  draculad-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: draculad
+          keymap: via
+          controller: helios
+          output-dir: draculad
+          local-keymap-path: draculad/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: draculad
+          dst: ./
+          storage-branch: main
