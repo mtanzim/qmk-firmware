@@ -1,4 +1,3 @@
-VIA_ENABLE = yes
 MOUSEKEY_ENABLE = yes       # Mouse keys
 TAP_DANCE_ENABLE = no
 
@@ -7,4 +6,4 @@ OLED_ENABLE = no
 LTO_ENABLE = yes
 
 # If you want to change the display of OLED, you need to change here
-SRC += ./common/oled_helper.c \
+SRC +=  ./common/oled_helper.c \
