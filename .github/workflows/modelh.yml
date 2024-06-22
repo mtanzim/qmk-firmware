@@ -7,6 +7,7 @@ on:
     - main
     paths:
     - .github/workflows/modelh.yml
+    - modelh/keymaps/**
 
 jobs:
   modelh-default:
