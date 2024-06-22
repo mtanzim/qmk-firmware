@@ -25,6 +25,23 @@ jobs:
           dst: ./
           storage-branch: main
 
+  chocv-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: chocv
+          keymap: via
+          output-dir: chocv
+          local-keymap-path: chocv/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: chocv
+          dst: ./
+          storage-branch: main
+
   chocv-default-helios:
     runs-on: ubuntu-latest
 
@@ -36,6 +53,24 @@ jobs:
           keymap: default
           controller: helios
           output-dir: chocv
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: chocv
+          dst: ./
+          storage-branch: main
+
+  chocv-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: chocv
+          keymap: via
+          controller: helios
+          output-dir: chocv
+          local-keymap-path: chocv/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: chocv
