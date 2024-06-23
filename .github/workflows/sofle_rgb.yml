@@ -18,9 +18,8 @@ jobs:
       - uses: medoix/build-qmk-fw@v1
         with:
           keyboard: sofle/rev1
-          keymap: rgb_default
+          keymap: default
           output-dir: sofle_rgb
-          local-keymap-path: sofle_rgb/keymaps/rgb_default
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle_rgb
@@ -35,9 +34,9 @@ jobs:
       - uses: medoix/build-qmk-fw@v1
         with:
           keyboard: sofle/rev1
-          keymap: rgb_via
+          keymap: via
           output-dir: sofle_rgb
-          local-keymap-path: sofle_rgb/keymaps/rgb_via
+          local-keymap-path: sofle_rgb/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle_rgb
@@ -52,10 +51,9 @@ jobs:
       - uses: medoix/build-qmk-fw@v1
         with:
           keyboard: sofle/rev1
-          keymap: rgb_default
+          keymap: default
           controller: helios
           output-dir: sofle_rgb
-          local-keymap-path: sofle_rgb/keymaps/rgb_default
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle_rgb
@@ -70,10 +68,10 @@ jobs:
       - uses: medoix/build-qmk-fw@v1
         with:
           keyboard: sofle/rev1
-          keymap: rgb_via
+          keymap: via
           controller: helios
           output-dir: sofle_rgb
-          local-keymap-path: sofle_rgb/keymaps/rgb_via
+          local-keymap-path: sofle_rgb/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle_rgb
