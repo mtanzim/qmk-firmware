@@ -51,11 +51,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: sofle
+          keyboard: sofle/rev1
           keymap: rgb_default
           controller: helios
           output-dir: sofle_rgb
-          local-keymap-path: sofle_rgb/keymaps/rgb_default
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle_rgb
@@ -69,7 +68,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: sofle
+          keyboard: sofle/rev1
           keymap: rgb_via
           controller: helios
           output-dir: sofle_rgb
