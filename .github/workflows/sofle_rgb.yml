@@ -20,7 +20,7 @@ jobs:
           keyboard: sofle/rev1
           keymap: rgb_default
           output-dir: sofle_rgb
-          # local-keymap-path: sofle_rgb/keymaps/rgb_default
+          local-keymap-path: sofle_rgb/keymaps/rgb_default
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle_rgb
@@ -55,6 +55,7 @@ jobs:
           keymap: rgb_default
           controller: helios
           output-dir: sofle_rgb
+          local-keymap-path: sofle_rgb/keymaps/rgb_default
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle_rgb
