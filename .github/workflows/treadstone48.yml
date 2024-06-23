@@ -7,7 +7,7 @@ on:
     - main
     paths:
     - .github/workflows/treadstone48.yml
-    - treadstone48/keymaps/**
+    - treadstone48/rev1/keymaps/**
 
 jobs:
   treadstone48-default:
