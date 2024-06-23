@@ -17,10 +17,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: sofle
+          keyboard: sofle/rev1
           keymap: rgb_default
           output-dir: sofle_rgb
-          local-keymap-path: sofle_rgb/keymaps/rgb_default
+          # local-keymap-path: sofle_rgb/keymaps/rgb_default
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle_rgb
@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: sofle
+          keyboard: sofle/rev1
           keymap: rgb_via
           output-dir: sofle_rgb
           local-keymap-path: sofle_rgb/keymaps/rgb_via
