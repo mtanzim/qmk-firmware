@@ -30,7 +30,7 @@
 #define CUSTOM_FONT
 
 #define CUSTOM_LAYER_READ //if you remove this it causes issues - needs better guarding
-
+#define DYNAMIC_KEYMAP_LAYER_COUNT 6
 
 #define QUICK_TAP_TERM 0
 #ifdef TAPPING_TERM
