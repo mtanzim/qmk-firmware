@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: treadstone48/rev1
+          keyboard: treadstone48
           keymap: default
           output-dir: treadstone48
       - uses: sylvanld/action-storage@v1
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: treadstone48/rev1
+          keyboard: treadstone48
           keymap: via
           output-dir: treadstone48
           local-keymap-path: treadstone48/keymaps/via
@@ -50,7 +50,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: treadstone48/rev1
+          keyboard: treadstone48
           keymap: default
           controller: helios
           output-dir: treadstone48
@@ -67,7 +67,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@v1
         with:
-          keyboard: treadstone48/rev1
+          keyboard: treadstone48
           keymap: via
           controller: helios
           output-dir: treadstone48
