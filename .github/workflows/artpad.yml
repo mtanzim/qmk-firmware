@@ -40,7 +40,8 @@ jobs:
           controller: helios
           output-dir: artpad
           local-keyboard-path: artpad
-      - uses: actions-x/commit@v6
+      - uses: sylvanld/action-storage@v1
         with:
-          files: artpad/*.uf2
-          force: true
+          src: artpad
+          dst: ./
+          storage-branch: main
