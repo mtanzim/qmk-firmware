@@ -40,8 +40,7 @@ jobs:
           controller: helios
           output-dir: artpad
           local-keyboard-path: artpad
-      - uses: sylvanld/action-storage@v1
+      - uses: EndBug/add-and-commit@v9
         with:
-          src: artpad
-          dst: ./
-          storage-branch: main
+          message: 'Update firmware file'
+          add: 'artpad/* --force'
