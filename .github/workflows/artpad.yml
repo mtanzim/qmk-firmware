@@ -38,10 +38,10 @@ jobs:
           keyboard: artpad
           keymap: vial
           controller: helios
-          output-dir: artpad-output
+          output-dir: qmk-output
           local-keyboard-path: artpad
       - uses: sylvanld/action-storage@v1
         with:
-          src: artpad-output
-          dst: ./artpad/
+          src: qmk-output
+          dst: ./
           storage-branch: main
