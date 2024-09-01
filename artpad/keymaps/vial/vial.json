@@ -1,5 +1,8 @@
 {
-    "lighting": "qmk_rgblight",
+  "name": "artpad",
+  "vendorId": "0xDC9E",
+  "productId": "0xA98D",
+  "lighting": "qmk_rgblight",
     "matrix": {
         "rows": 4,
         "cols": 5 
