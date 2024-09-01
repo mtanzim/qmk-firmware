@@ -43,4 +43,4 @@ jobs:
       - uses: EndBug/add-and-commit@v9
         with:
           message: 'Update firmware file'
-          add: 'artpad/* --force'
+          add: '. --force'
