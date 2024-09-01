@@ -7,7 +7,7 @@ on:
     - main
     paths:
     - .github/workflows/artpad.yml
-    - artpad/keymaps/**
+    - artpad/**
 
 jobs:
 
