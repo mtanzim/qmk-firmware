@@ -13,6 +13,19 @@
  * You should have received a copy of the GNU General Public License 
  * along with this program.  If not, see <http://www.gnu.org/licenses/>. 
  */
+#pragma once
 
+#include "quantum.h"
 
-#include "artpad.h"
+#define ___ KC_NO
+
+#define LAYOUT_all( \
+  K00, K01, K02, K03, K04, \
+  K10, K11, K12, K13, K14, \
+  K20, K21, K22, K23, K24, K34 \
+) { \
+	{ K00,   K01,   K02,   K03,   K04 }, \
+	{ K10,   K11,   K12,   K13,   K14 }, \
+	{ K20,   K21,   K22,   K23,   K24 }, \
+	{ ___,   ___,   ___,   ___,   K34 } \
+}
