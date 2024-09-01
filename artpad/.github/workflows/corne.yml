@@ -1,0 +1,78 @@
+name: "Corne Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/corne.yml
+
+jobs:
+  corne-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: crkbd/rev1
+          keymap: default
+          output-dir: corne
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: corne
+          dst: ./
+          storage-branch: main
+
+  corne-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: crkbd/rev1
+          keymap: via
+          output-dir: corne
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: corne
+          dst: ./
+          storage-branch: main
+
+  corne-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: crkbd/rev1
+          keymap: default
+          controller: helios
+          output-dir: corne
+
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: corne
+          dst: ./
+          storage-branch: main
+
+  corne-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: crkbd/rev1
+          keymap: via
+          controller: helios
+          output-dir: corne
+
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: corne
+          dst: ./
+          storage-branch: main

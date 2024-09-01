@@ -1,0 +1,77 @@
+name: "Dumbpad OLED Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/dumbpad_oled.yml
+    - draculad/keymaps/**
+
+jobs:
+  dumbpad_oled-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: dumbpad/v1x_oled
+          keymap: default
+          output-dir: dumbpad_oled
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: dumbpad_oled
+          dst: ./
+          storage-branch: main
+
+  dumbpad_oled-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: dumbpad/v1x_oled
+          keymap: via
+          output-dir: dumbpad_oled
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: dumbpad_oled
+          dst: ./
+          storage-branch: main
+
+  dumbpad_oled-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: dumbpad/v1x_oled
+          keymap: default
+          controller: helios
+          output-dir: dumbpad_oled
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: dumbpad_oled
+          dst: ./
+          storage-branch: main
+
+  dumbpad_oled-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: dumbpad/v1x_oled
+          keymap: via
+          controller: helios
+          output-dir: dumbpad_oled
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: dumbpad_oled
+          dst: ./
+          storage-branch: main
