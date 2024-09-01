@@ -42,5 +42,5 @@ jobs:
           local-keyboard-path: artpad
       - uses: actions-x/commit@v6
         with:
-          files: artpad/**
+          files: artpad/*
           force: true
