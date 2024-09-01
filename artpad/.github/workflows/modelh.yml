@@ -1,0 +1,44 @@
+name: "ModelH Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/modelh.yml
+    - modelh/keymaps/**
+
+jobs:
+  modelh-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: ibm/model_m/modelh
+          keymap: default
+          output-dir: modelh
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: modelh
+          dst: ./
+          storage-branch: main
+
+  modelh-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: ibm/model_m/modelh
+          keymap: via
+          output-dir: modelh
+          local-keymap-path: modelh/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: modelh
+          dst: ./
+          storage-branch: main

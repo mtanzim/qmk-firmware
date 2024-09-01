@@ -1,0 +1,76 @@
+name: "Eternal Keypad Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/eternal_keypad.yml
+
+jobs:
+  eternal_keypad-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: eternal_keypad
+          keymap: default
+          output-dir: eternal_keypad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: eternal_keypad
+          dst: ./
+          storage-branch: main
+
+  eternal_keypad-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: eternal_keypad
+          keymap: via
+          output-dir: eternal_keypad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: eternal_keypad
+          dst: ./
+          storage-branch: main
+
+  eternal_keypad-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: eternal_keypad
+          keymap: default
+          controller: helios
+          output-dir: eternal_keypad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: eternal_keypad
+          dst: ./
+          storage-branch: main
+
+  eternal_keypad-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: eternal_keypad
+          keymap: via
+          controller: helios
+          output-dir: eternal_keypad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: eternal_keypad
+          dst: ./
+          storage-branch: main

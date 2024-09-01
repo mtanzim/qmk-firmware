@@ -1,0 +1,79 @@
+name: "Rhymestone Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/rhymestone.yml
+    - rhymestone/keymaps/**
+
+jobs:
+  rhymestone-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: marksard/rhymestone
+          keymap: default
+          output-dir: rhymestone
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: rhymestone
+          dst: ./
+          storage-branch: main
+
+  rhymestone-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: marksard/rhymestone
+          keymap: via
+          output-dir: rhymestone
+          local-keymap-path: rhymestone/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: rhymestone
+          dst: ./
+          storage-branch: main
+
+  rhymestone-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: marksard/rhymestone
+          keymap: default
+          controller: helios
+          output-dir: rhymestone
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: rhymestone
+          dst: ./
+          storage-branch: main
+
+  rhymestone-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v1
+        with:
+          keyboard: marksard/rhymestone
+          keymap: via
+          controller: helios
+          output-dir: rhymestone
+          local-keymap-path: rhymestone/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: rhymestone
+          dst: ./
+          storage-branch: main

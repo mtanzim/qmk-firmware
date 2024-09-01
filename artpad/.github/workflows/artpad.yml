@@ -1,0 +1,47 @@
+name: "ArtPad Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/artpad.yml
+    - artpad/**
+
+jobs:
+
+  artpad-vial:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v2
+        with:
+          keyboard: artpad
+          keymap: vial
+          output-dir: artpad
+          local-keyboard-path: artpad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: artpad
+          dst: ./
+          storage-branch: main
+
+  artpad-vial-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@v2
+        with:
+          keyboard: artpad
+          keymap: vial
+          controller: helios
+          output-dir: ./
+          local-keyboard-path: artpad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: ./
+          dst: artpad
+          storage-branch: main
