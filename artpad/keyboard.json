@@ -19,7 +19,7 @@
         ]
     },
     "processor": "atmega32u4",
-    "bootloader": "atmel-dfu",
+    "bootloader": "caterina",
     "features": {
         "bootmagic": true,
         "mousekey": false,
