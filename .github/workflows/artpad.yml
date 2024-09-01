@@ -38,9 +38,10 @@ jobs:
           keyboard: artpad
           keymap: vial
           controller: helios
-          output-dir: artpad
+          output-dir: artpad-output
           local-keyboard-path: artpad
-      - uses: EndBug/add-and-commit@v9
+      - uses: sylvanld/action-storage@v1
         with:
-          message: 'Update firmware file'
-          add: '. --force'
+          src: artpad-output
+          dst: ./artpad/
+          storage-branch: main
