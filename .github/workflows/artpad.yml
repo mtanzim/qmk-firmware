@@ -21,10 +21,10 @@ jobs:
           keyboard: artpad
           keymap: vial
           controller: helios
-          output-dir: /opt/artpad
+          output-dir: artpad
           local-keyboard-path: artpad
       - uses: sylvanld/action-storage@v1
         with:
-          src: /opt/artpad
+          src: artpad
           dst: ./
           storage-branch: main
