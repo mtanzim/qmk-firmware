@@ -9,4 +9,4 @@ VIA_ENABLE = yes
 OPT_DEFS += -DRS_EXTRA_LED
 
 # If you want to change the display of OLED, you need to change here
-SRC +=  ./common/oled_helper.c \
+SRC +=  ./common/oled_helper.c
