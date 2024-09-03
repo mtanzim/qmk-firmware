@@ -38,10 +38,6 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_QESC]   = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESC),
 };
 
-const key_override_t **key_overrides = (const key_override_t *[]) {
-    NULL
-};
-
 #define QESC  TD(TD_QESC)
 #define BSFT  LSFT_T(KC_B)
 #define VCTL  LCTL_T(KC_V)
