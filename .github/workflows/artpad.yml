@@ -16,19 +16,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: List directory content checkout
-        run: ls -la
       - uses: medoix/build-qmk-fw@vial-qmk
         with:
           keyboard: artpad
           keymap: vial
           controller: helios
           local-keyboard-path: artpad
-      - name: List directory content build
-        run: ls -la
-      - uses: StirlingLabs/BranchStorageAction@main
+          output-dir: artpad
+      - uses: sylvanld/action-storage@v1
         with:
-          src: qmk-output
-          dst: artpad
-          storage-branch: firmware
-          prune: true
+          src: cantor
+          dst: ./
+          storage-branch: main
