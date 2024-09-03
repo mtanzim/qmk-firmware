@@ -1,4 +1,4 @@
-name: "Fourier KEEBD Firmware"
+name: "KEEBD Fourier Firmware"
 
 on:
   workflow_dispatch:
@@ -6,77 +6,77 @@ on:
     branches:
     - main
     paths:
-    - .github/workflows/fourier-keebd.yml
-    - fourier-keebd/**
+    - .github/workflows/keebd_fourier.yml
+    - keebd_fourier/**
 
 jobs:
 
-  fourier-keebd-default:
+  keebd-fourier-default:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@main
         with:
-          keyboard: fourier-keebd
+          keyboard: keebd_fourier
           keymap: default
-          local-keyboard-path: fourier-keebd
-          output-dir: fourier-keebd
+          local-keyboard-path: keebd_fourier
+          output-dir: keebd_fourier
       - uses: sylvanld/action-storage@v1
         with:
-          src: fourier-keebd
+          src: keebd_fourier
           dst: ./
           storage-branch: main
 
-  fourier-keebd-via:
+  keebd-fourier-via:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@main
         with:
-          keyboard: fourier-keebd
+          keyboard: keebd_fourier
           keymap: via
-          local-keyboard-path: fourier-keebd
-          output-dir: fourier-keebd
+          local-keyboard-path: keebd_fourier
+          output-dir: keebd_fourier
       - uses: sylvanld/action-storage@v1
         with:
-          src: fourier-keebd
+          src: keebd_fourier
           dst: ./
           storage-branch: main
 
-  fourier-keebd-helios:
+  keebd-fourier-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@main
         with:
-          keyboard: fourier-keebd
+          keyboard: keebd_fourier
           keymap: default
           controller: helios
-          local-keyboard-path: fourier-keebd
-          output-dir: fourier-keebd
+          local-keyboard-path: keebd_fourier
+          output-dir: keebd_fourier
       - uses: sylvanld/action-storage@v1
         with:
-          src: fourier-keebd
+          src: keebd_fourier
           dst: ./
           storage-branch: main
 
-  fourier-keebd-via-helios:
+  keebd-fourier-via-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@main
         with:
-          keyboard: fourier-keebd
+          keyboard: keebd_fourier
           keymap: via
           controller: helios
-          local-keyboard-path: fourier-keebd
-          output-dir: fourier-keebd
+          local-keyboard-path: keebd_fourier
+          output-dir: keebd_fourier
       - uses: sylvanld/action-storage@v1
         with:
-          src: fourier-keebd
+          src: keebd_fourier
           dst: ./
           storage-branch: main
