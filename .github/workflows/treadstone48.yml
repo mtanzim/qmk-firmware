@@ -36,7 +36,7 @@ jobs:
           keyboard: marksard/treadstone48/rev1
           keymap: via
           output-dir: treadstone48
-          local-keymap-path: treadstone48/rev1/keymaps/via
+          local-keymap-path: treadstone48/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: treadstone48
@@ -71,7 +71,7 @@ jobs:
           keymap: via
           controller: helios
           output-dir: treadstone48
-          local-keymap-path: treadstone48/rev1/keymaps/via
+          local-keymap-path: treadstone48/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: treadstone48
