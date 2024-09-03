@@ -16,12 +16,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: List directory content checkout
+        run: ls -la
       - uses: medoix/build-qmk-fw@v2-vial
         with:
           keyboard: artpad
           keymap: vial
           controller: helios
           local-keyboard-path: artpad
+      - name: List directory content build
+        run: ls -la
       - uses: StirlingLabs/BranchStorageAction@main
         with:
           src: qmk-output
