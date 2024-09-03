@@ -21,10 +21,11 @@ jobs:
           keyboard: artpad
           keymap: vial
           controller: helios
-          output-dir: /github/workspace/artpad
+          output-dir: artpad
           local-keyboard-path: artpad
-      - uses: sylvanld/action-storage@v1
+      - uses: StirlingLabs/BranchStorageAction@main
         with:
-          src: /github/workspace/artpad
+          src: artpad
           dst: ./
-          storage-branch: main
+          storage-branch: firmware
+          prune: true
