@@ -21,11 +21,10 @@ jobs:
           keyboard: artpad
           keymap: vial
           controller: helios
-          output-dir: artpad
           local-keyboard-path: artpad
       - uses: StirlingLabs/BranchStorageAction@main
         with:
-          src: artpad
-          dst: ./
+          src: qmk-output/**
+          dst: artpad
           storage-branch: firmware
           prune: true
