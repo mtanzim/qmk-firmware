@@ -24,7 +24,7 @@ jobs:
           local-keyboard-path: artpad
       - uses: StirlingLabs/BranchStorageAction@main
         with:
-          src: qmk-output/**
+          src: qmk-output
           dst: artpad
           storage-branch: firmware
           prune: true
