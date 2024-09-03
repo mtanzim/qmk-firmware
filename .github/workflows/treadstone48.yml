@@ -26,23 +26,6 @@ jobs:
           dst: ./
           storage-branch: main
 
-  treadstone48-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: marksard/treadstone48
-          keymap: via
-          output-dir: treadstone48
-          local-keymap-path: treadstone48/keymaps/via
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: treadstone48
-          dst: ./
-          storage-branch: main
-
   treadstone48-default-helios:
     runs-on: ubuntu-latest
 
@@ -54,24 +37,6 @@ jobs:
           keymap: default
           controller: helios
           output-dir: treadstone48
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: treadstone48
-          dst: ./
-          storage-branch: main
-
-  treadstone48-via-helios:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: marksard/treadstone48
-          keymap: via
-          controller: helios
-          output-dir: treadstone48
-          local-keymap-path: treadstone48/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: treadstone48
