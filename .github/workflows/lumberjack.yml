@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@vial-qmk
         with:
-          keyboard: lumberjack
+          keyboard: peej/lumberjack
           keymap: via
           output-dir: lumberjack
       - uses: sylvanld/action-storage@v1
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: medoix/build-qmk-fw@vial-qmk
         with:
-          keyboard: lumberjack
+          keyboard: peej/lumberjack
           keymap: vial
           output-dir: lumberjack
       - uses: sylvanld/action-storage@v1
