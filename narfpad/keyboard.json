@@ -18,7 +18,7 @@
             {"pin_a": "GP1", "pin_b": "GP2"}
         ]
     },
-    "processor": "rp2040",
+    "processor": "RP2040",
     "bootloader": "rp2040",
     "features": {
         "encoder": true
