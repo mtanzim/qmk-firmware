@@ -6,7 +6,7 @@ on:
     branches:
     - main
     paths:
-    - .github/workflows/milk.yml
+    - .github/workflows/basketweave.yml
 
 jobs:
 
