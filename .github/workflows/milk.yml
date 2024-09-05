@@ -1,0 +1,44 @@
+name: "Milk Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/milk.yml
+
+jobs:
+  milk-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@vial-qmk
+        with:
+          keyboard: spaceman/2_milk
+          keymap: via
+          controller: helios
+          output-dir: milk
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: milk
+          dst: ./
+          storage-branch: main
+
+  milk-vial-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@vial-qmk
+        with:
+          keyboard: spaceman/2_milk
+          keymap: vial
+          controller: helios
+          output-dir: milk
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: milk
+          dst: ./
+          storage-branch: main
