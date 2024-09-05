@@ -1,0 +1,29 @@
+name: "Narfpad Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/narfpad.yml
+    - narfpad/**
+
+jobs:
+
+  narfpad-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@main
+        with:
+          keyboard: narfpad
+          keymap: default
+          local-keyboard-path: narfpad
+          output-dir: narfpad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: narfpad
+          dst: ./
+          storage-branch: main
