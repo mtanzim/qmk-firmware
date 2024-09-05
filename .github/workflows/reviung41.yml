@@ -1,0 +1,44 @@
+name: "Reviung 41 Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/reviung41.yml
+
+jobs:
+
+  reviung41-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@main
+        with:
+          keyboard: reviung/reviung41
+          keymap: default
+          output-dir: reviung41
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: reviung41
+          dst: ./
+          storage-branch: main
+
+  reviung41-vial-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@vial-qmk
+        with:
+          keyboard: reviung/reviung41
+          keymap: vial
+          controller: helios
+          output-dir: reviung41
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: reviung41
+          dst: ./
+          storage-branch: main
