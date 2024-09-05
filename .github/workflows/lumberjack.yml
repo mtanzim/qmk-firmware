@@ -10,15 +10,15 @@ on:
 
 jobs:
 
-  lumberjack-via:
+  lumberjack-default:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@vial-qmk
+      - uses: medoix/build-qmk-fw@main
         with:
           keyboard: peej/lumberjack
-          keymap: via
+          keymap: default
           output-dir: lumberjack
       - uses: sylvanld/action-storage@v1
         with:
