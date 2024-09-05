@@ -19,7 +19,6 @@ jobs:
         with:
           keyboard: lumberjack
           keymap: via
-          local-keyboard-path: lumberjack
           output-dir: lumberjack
       - uses: sylvanld/action-storage@v1
         with:
@@ -36,7 +35,6 @@ jobs:
         with:
           keyboard: lumberjack
           keymap: vial
-          local-keyboard-path: lumberjack
           output-dir: lumberjack
       - uses: sylvanld/action-storage@v1
         with:
