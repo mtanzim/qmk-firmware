@@ -1,0 +1,45 @@
+name: "Lumberjack Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/lumberjack.yml
+
+jobs:
+
+  lumberjack-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@vial-qmk
+        with:
+          keyboard: lumberjack
+          keymap: via
+          local-keyboard-path: lumberjack
+          output-dir: lumberjack
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: lumberjack
+          dst: ./
+          storage-branch: main
+
+  lumberjack-vial:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@vial-qmk
+        with:
+          keyboard: lumberjack
+          keymap: vial
+          local-keyboard-path: lumberjack
+          output-dir: lumberjack
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: lumberjack
+          dst: ./
+          storage-branch: main
