@@ -1,0 +1,30 @@
+name: "Pee-Two Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/pee_two.yml
+    - pee_two/**
+
+jobs:
+
+  pee-two-vial-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@vial-qmk
+        with:
+          keyboard: pee_two
+          keymap: vial
+          controller: helios
+          local-keyboard-path: pee_two
+          output-dir: pee_two
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: pee_two
+          dst: ./
+          storage-branch: main

@@ -1,0 +1,37 @@
+{
+    "keyboard_name": "Pee-Two Macro Pad", 
+    "url": "https://github.com/pabile/pee-two/", 
+    "maintainer": "pabile",
+    "manufacturer": "pabile",
+    "usb": {
+        "vid": "0x6666",
+        "pid": "0x6672",
+        "device_version": "1.0.0"
+    },
+    "matrix_pins": {
+        "cols": ["D3", "D2"],
+        "rows": ["D7"]
+    },
+    "diode_direction": "COL2ROW",
+    "encoder": {
+        "rotary": [
+            {"pin_a": "B4", "pin_b": "E6"}
+        ]
+    },
+    "processor": "atmega32u4",
+    "bootloader": "caterina",
+    "features": {
+        "bootmagic": false,
+        "mousekey": true,
+        "extrakey": true,
+        "encoder": true
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"matrix": [0, 0], "x":0, "y":0},
+                {"matrix": [0, 1], "x":1.25, "y":0}
+            ]
+        }
+    }
+}
