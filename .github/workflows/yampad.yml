@@ -1,0 +1,43 @@
+name: "Yampad Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/yampad.yml
+
+jobs:
+  yampad-default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@main
+        with:
+          keyboard: yampad
+          keymap: default
+          output-dir: yampad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: yampad
+          dst: ./
+          storage-branch: main
+
+  yampad-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@main
+        with:
+          keyboard: yampad
+          keymap: default
+          controller: helios
+          output-dir: yampad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: yampad
+          dst: ./
+          storage-branch: main
