@@ -79,3 +79,38 @@ jobs:
           src: sofle_rgb
           dst: ./
           storage-branch: main
+
+  sofle_rgb-vial-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@vial-qmk
+        with:
+          keyboard: sofle/rev1
+          keymap: vial
+          controller: helios
+          output-dir: sofle_rgb
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle_rgb
+          dst: ./
+          storage-branch: main
+
+  sofle_rgb-vial-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@vial-qmk
+        with:
+          keyboard: sofle/rev1
+          keymap: vial_svlinky
+          controller: helios
+          output-dir: sofle_rgb
+          local-keymap-path: sofle_rgb/keymaps/vial_svlinky
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle_rgb
+          dst: ./
+          storage-branch: main
