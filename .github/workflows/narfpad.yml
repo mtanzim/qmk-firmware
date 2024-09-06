@@ -19,7 +19,6 @@ jobs:
       - uses: medoix/build-qmk-fw@main
         with:
           keyboard: narfpad
-          keymap: default
           local-keyboard-path: narfpad
           output-dir: narfpad
       - uses: sylvanld/action-storage@v1
