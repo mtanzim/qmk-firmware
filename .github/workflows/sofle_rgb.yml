@@ -91,6 +91,7 @@ jobs:
           keymap: vial
           controller: helios
           output-dir: sofle_rgb
+          local-keymap-path: sofle_rgb/keymaps/vial
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle_rgb
