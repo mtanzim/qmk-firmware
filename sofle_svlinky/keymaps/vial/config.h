@@ -25,8 +25,8 @@
 
 //#define MATRIX_ROW_PINS { GP29, GP28, GP18, GP24, GP22, GP20, GP23, GP21 } // svlinky v0.2
 
-#define ENCODERS_PAD_A { GP26 } // svlinky v0.2
-#define ENCODERS_PAD_B { GP27 } // svlinky v0.2
+//#define ENCODERS_PAD_A { GP26 } // svlinky v0.2
+//#define ENCODERS_PAD_B { GP27 } // svlinky v0.2
 
 // Vial Support
 #define VIAL_KEYBOARD_UID { 0x05, 0xCD, 0x9F, 0x8A, 0xF4, 0xDF, 0xDE, 0xB2 }
