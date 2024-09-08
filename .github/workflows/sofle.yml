@@ -45,3 +45,21 @@ jobs:
           src: sofle
           dst: ./
           storage-branch: main
+
+  sofle-vial-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@vial-qmk
+        with:
+          keyboard: sofle
+          keymap: svlinky
+          controller: elite_pi
+          output-dir: sofle
+          local-keymap-path: sofle/keymaps/svlinky
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle
+          dst: ./
+          storage-branch: main
