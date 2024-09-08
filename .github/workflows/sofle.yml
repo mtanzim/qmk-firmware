@@ -7,7 +7,7 @@ on:
     - main
     paths:
     - .github/workflows/sofle.yml
-    - sofle/keymaps/**
+    - sofle/**
 
 jobs:
   sofle-default:

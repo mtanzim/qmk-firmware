@@ -28,6 +28,7 @@ This repository auto generates the QMK flash firmware files for keyboards sold a
 - ![Rhymestone](https://github.com/keebd/qmk-firmware/actions/workflows/rhymestone.yml/badge.svg)
 - ![SatPad](https://github.com/keebd/qmk-firmware/actions/workflows/satpad.yml/badge.svg)
 - ![Sofle Choc](https://github.com/keebd/qmk-firmware/actions/workflows/sofle_choc.yml/badge.svg)
+- ![Sofle RGB Svlinky](https://github.com/keebd/qmk-firmware/actions/workflows/sofle_rgb_svlinky.yml/badge.svg)
 - ![Sofle RGB](https://github.com/keebd/qmk-firmware/actions/workflows/sofle_rgb.yml/badge.svg)
 - ![Sofle](https://github.com/keebd/qmk-firmware/actions/workflows/sofle.yml/badge.svg)
 - ![Treadstone48](https://github.com/keebd/qmk-firmware/actions/workflows/treadstone48.yml/badge.svg)

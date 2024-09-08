@@ -1,0 +1,29 @@
+name: "Sofle RGB Svlinky Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/sofle_rgb_svlinky.yml
+    - sofle_rgb_svlinky/keymaps/**
+
+jobs:
+    sofle_rgb-vial:
+        runs-on: ubuntu-latest
+
+        steps:
+        - uses: actions/checkout@v4
+        - uses: medoix/build-qmk-fw@vial-qmk
+          with:
+            keyboard: sofle_rgb_svlinky
+            keymap: vial
+            controller: helios
+            output-dir: sofle_rgb
+            local-keyboard-path: sofle_rgb_svlinky
+        - uses: sylvanld/action-storage@v1
+          with:
+            src: sofle_rgb
+            dst: ./
+            storage-branch: main
