@@ -7,6 +7,7 @@ on:
     - main
     paths:
     - .github/workflows/sofle.yml
+    - sofle/keymaps/**
 
 jobs:
   sofle-default:
@@ -14,11 +15,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: medoix/build-qmk-fw@main
         with:
           keyboard: sofle
           keymap: default
           output-dir: sofle
+          local-keymap-path: sofle/keymaps/default
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle
@@ -30,11 +32,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: medoix/build-qmk-fw@main
         with:
           keyboard: sofle
           keymap: via
           output-dir: sofle
+          local-keymap-path: sofle/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle
@@ -46,12 +49,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: medoix/build-qmk-fw@main
         with:
           keyboard: sofle
           keymap: default
           controller: helios
           output-dir: sofle
+          local-keymap-path: sofle/keymaps/default
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle
@@ -63,12 +67,31 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: medoix/build-qmk-fw@main
         with:
           keyboard: sofle
           keymap: via
           controller: helios
           output-dir: sofle
+          local-keymap-path: sofle/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle
+          dst: ./
+          storage-branch: main
+
+  sofle-vial-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@vial-qmk
+        with:
+          keyboard: sofle
+          keymap: vial
+          controller: helios
+          output-dir: sofle
+          local-keymap-path: sofle/keymaps/vial
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle
