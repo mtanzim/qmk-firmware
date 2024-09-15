@@ -1,8 +1,7 @@
 VIA_ENABLE          = yes
 VIAL_ENABLE         = yes
 VIAL_INSECURE 		= yes
-BACKLIGHT_ENABLE 	= yes
-RGBLIGHT_ENABLE 	= yes
+VIALRGB_ENABLE 		= yes
 LTO_ENABLE          = yes
 
 MOUSEKEY_ENABLE     = no

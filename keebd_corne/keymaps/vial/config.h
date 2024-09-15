@@ -25,12 +25,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DYNAMIC_KEYMAP_LAYER_COUNT 4
 #define TAPPING_TERM 180
 
-//#define USE_MATRIX_I2C
-#ifdef KEYBOARD_keebd_corne_legacy
-#    undef USE_I2C
-#    define USE_SERIAL
-#endif
-
 /* Select hand configuration */
 #define SOFT_SERIAL_PIN D2
 #define MASTER_LEFT
@@ -39,14 +33,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL_PD2
 #define BACKLIGHT_PIN B5
+
 // #define BACKLIGHT_BREATHING
 #ifdef RGBLIGHT_ENABLE
-#    undef RGBLIGHT_LED_COUNT
-#    define RGBLIGHT_ANIMATIONS
-#    define RGBLIGHT_LED_COUNT 54
-#    undef RGBLED_SPLIT
-#    define RGBLED_SPLIT \
-        { 27, 27 }
+// #    undef RGBLIGHT_LED_COUNT
+// #    define RGBLIGHT_ANIMATIONS
+// #    define RGBLIGHT_LED_COUNT 54
+// #    undef RGBLED_SPLIT
+// #    define RGBLED_SPLIT \
+//         { 27, 27 }
 #    define RGBLIGHT_LIMIT_VAL 120
 #    define RGBLIGHT_HUE_STEP  10
 #    define RGBLIGHT_SAT_STEP  17
