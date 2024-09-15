@@ -32,7 +32,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define EE_HANDS
 
 #define USE_SERIAL_PD2
-#define BACKLIGHT_PIN B5
+#define RGB_DI_PIN B5
+#define DRIVER_LED_TOTAL 54
 
 // #define BACKLIGHT_BREATHING
 #ifdef RGBLIGHT_ENABLE
