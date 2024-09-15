@@ -36,8 +36,14 @@
             }
         }
     },
+    "rgblight": {
+        "led_count": 54,
+        "split_count": [27, 27]
+    },
+    "ws2812": {
+        "pin": "B5"
+    },
     "rgb_matrix": {
-        "driver": "ws2812",
         "split_count": [27, 27],
         "layout": [
             {"x": 85, "y": 16, "flags": 2},
@@ -95,24 +101,6 @@
             {"matrix": [5, 0], "x": 224, "y": 24, "flags": 1},
             {"matrix": [6, 0], "x": 224, "y": 41, "flags": 1}
         ]
-    },
-    "rgblight": {
-        "led_count": 54,
-        "split": true,
-        "split_count": [27, 27],
-        "animations": {
-            "breathing": true,
-            "rainbow_mood": true,
-        },
-        "default": {
-            "animation": "rainbow_mood",
-            "on": true
-        },
-        "driver": "ws2812"
-    },
-    "ws2812": {
-        "pin": "B5",
-        "rgbw": true
     },
     "layout_aliases": {
         "LAYOUT": "LAYOUT_split_3x6_3"
