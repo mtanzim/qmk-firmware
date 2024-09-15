@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 180
 
 //#define USE_MATRIX_I2C
-#ifdef KEYBOARD_crkbd_rev1_legacy
+#ifdef KEYBOARD_keebd_corne_legacy
 #    undef USE_I2C
 #    define USE_SERIAL
 #endif
