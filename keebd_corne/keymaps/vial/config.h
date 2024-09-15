@@ -39,7 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL_PD2
 #define BACKLIGHT_PIN B5
-#define BACKLIGHT_BREATHING
+// #define BACKLIGHT_BREATHING
 #ifdef RGBLIGHT_ENABLE
 #    undef RGBLIGHT_LED_COUNT
 #    define RGBLIGHT_ANIMATIONS
