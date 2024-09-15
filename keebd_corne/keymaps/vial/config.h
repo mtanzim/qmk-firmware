@@ -32,7 +32,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define EE_HANDS
 
 #define USE_SERIAL_PD2
+// The pin connected to the data pin of the LEDs
 #define BACKLIGHT_PIN B5
+#define RGB_DI_PIN B5
+// The number of LEDs connected
+#define DRIVER_LED_TOTAL 54
 
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_ANIMATIONS
