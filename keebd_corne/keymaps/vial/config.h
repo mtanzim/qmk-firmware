@@ -32,7 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 /* Select hand configuration */
-
+#define SOFT_SERIAL_PIN D2
 #define MASTER_LEFT
 // #define MASTER_RIGHT
 // #define EE_HANDS
