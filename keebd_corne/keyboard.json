@@ -25,6 +25,7 @@
     "bootloader": "rp2040",
     "community_layouts": [ "split_3x5_3", "split_3x6_3" ],
     "split": {
+        "enabled": true,
         "serial": {
             "pin": "D2"
         },
