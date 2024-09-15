@@ -40,6 +40,7 @@
         "split_count": [27, 27]
     },
     "ws2812": {
+        "driver": "vendor",
         "pin": "GP12"
     },
     "layout_aliases": {
