@@ -26,10 +26,6 @@
     "community_layouts": [ "split_3x5_3", "split_3x6_3" ],
     "split": {
         "enabled": true,
-        "serial": {
-            "driver": "vendor",
-            "pin": "D2"
-        },
         "transport": {
             "sync": {
                 "matrix_state": true
