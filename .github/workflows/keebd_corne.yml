@@ -19,7 +19,6 @@ jobs:
         with:
           keyboard: keebd_corne
           keymap: default
-          controller: helios
           local-keyboard-path: keebd_corne
           output-dir: keebd_corne
 
@@ -38,7 +37,6 @@ jobs:
         with:
           keyboard: keebd_corne
           keymap: vial
-          controller: helios
           local-keyboard-path: keebd_corne
           output-dir: keebd_corne
 
