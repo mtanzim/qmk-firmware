@@ -1,0 +1,48 @@
+name: "KEEBD Corne Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/keebd_corne.yml
+
+jobs:
+  keebd-corne-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@main
+        with:
+          keyboard: keebd_corne
+          keymap: default
+          controller: helios
+          local-keyboard-path: keebd_corne
+          output-dir: keebd_corne
+
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: keebd_corne
+          dst: ./
+          storage-branch: main
+
+  keebd-corne-vial-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: medoix/build-qmk-fw@vial-qmk
+        with:
+          keyboard: keebd_corne
+          keymap: vial
+          controller: helios
+          local-keyboard-path: keebd_corne
+          output-dir: keebd_corne
+
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: keebd_corne
+          dst: ./
+          storage-branch: main
