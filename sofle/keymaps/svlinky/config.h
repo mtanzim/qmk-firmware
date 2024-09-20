@@ -23,6 +23,12 @@
 #define VIK_GPIO_1        GP26 // svlinky v0.2
 #define VIK_GPIO_2        GP27 // svlinky v0.2
 
+#define MATRIX_ROW_PINS { GP18, GP24, GP22, GP20, GP23, GP21 } // svlinky v0.2
+#define MATRIX_COL_PINS { GP5, GP6, GP7, GP8, GP9 } // svlinky v0.2
+
+#define ENCODERS_PAD_A { GP26 } // svlinky v0.2
+#define ENCODERS_PAD_B { GP27 } // svlinky v0.2
+
 // Vial Support
 #define VIAL_KEYBOARD_UID { 0x05, 0xCD, 0x9F, 0x8A, 0xF4, 0xDF, 0xDE, 0xB2 }
 

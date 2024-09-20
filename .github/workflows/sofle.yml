@@ -55,6 +55,7 @@ jobs:
         with:
           keyboard: sofle
           keymap: svlinky
+          controller: elite_pi
           output-dir: sofle
           local-keymap-path: sofle/keymaps/svlinky
       - uses: sylvanld/action-storage@v1
