@@ -51,7 +51,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@vial-qmk
+      - uses: medoix/build-qmk-fw@main
         with:
           keyboard: sofle
           keymap: svlinky
