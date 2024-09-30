@@ -21,7 +21,6 @@ jobs:
           keyboard: sofle
           keymap: rgb_default
           controller: helios
-          local-keyboard-path: sofle
           output-dir: sofle
       - uses: sylvanld/action-storage@v1
         with:
@@ -39,8 +38,8 @@ jobs:
           keyboard: sofle
           keymap: vial
           controller: helios
-          local-keyboard-path: sofle
           output-dir: sofle
+          local-keymap-path: sofle/keymaps/vial
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle
@@ -56,8 +55,9 @@ jobs:
         with:
           keyboard: sofle
           keymap: svlinky
+          controller: promicro_rp2040
           output-dir: sofle
-          local-keyboard-path: sofle
+          local-keymap-path: sofle/keymaps/svlinky
       - uses: sylvanld/action-storage@v1
         with:
           src: sofle
