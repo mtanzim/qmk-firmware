@@ -8,7 +8,6 @@
         "pid": "0x7E72",
         "device_version": "1.0.0"
     },
-    "diode_direction": "COL2ROW",
     "processor": "RP2040",
     "bootloader": "rp2040",
     "layouts": {
