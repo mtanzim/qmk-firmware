@@ -21,6 +21,7 @@ This repository auto generates the QMK flash firmware files for keyboards sold a
 - ![Milk 2%](https://github.com/keebd/qmk-firmware/actions/workflows/milk.yml/badge.svg)
 - ![Model H](https://github.com/keebd/qmk-firmware/actions/workflows/modelh.yml/badge.svg)
 - ![Narfpad](https://github.com/keebd/qmk-firmware/actions/workflows/narfpad.yml/badge.svg)
+- ![PaintBrush](https://github.com/keebd/qmk-firmware/actions/workflows/paintbrush.yml/badge.svg)
 - ![Pee-Two](https://github.com/keebd/qmk-firmware/actions/workflows/pee_two.yml/badge.svg)
 - ![Reviung 5](https://github.com/keebd/qmk-firmware/actions/workflows/reviung5.yml/badge.svg)
 - ![Reviung 39](https://github.com/keebd/qmk-firmware/actions/workflows/reviung39.yml/badge.svg)
