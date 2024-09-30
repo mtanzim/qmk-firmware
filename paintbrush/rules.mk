@@ -11,6 +11,8 @@ TERMINAL_ENABLE = no
 VIA_ENABLE = no
 LTO_ENABLE = no # We support arm qmk devices which are incompatabl with this avr specific option
 
+COMBO_ENABLE = yes # Enable Artsey Combos
+
 # Work around limitation with userland and the way we have 'dynamic' direct wiring
 #     This *should* live in config.h but KemoNine can't figure out how to check which keymap is in use at that level
 PINS_HAND_LEFT = -DDIRECT_PINS="{ { F7, F6, F5, F4 }, { B6, B2, B3, B1 } }"
