@@ -7,19 +7,39 @@ on:
     - main
     paths:
     - .github/workflows/milk.yml
+    - milk/**
 
 jobs:
 
-  milk-default:
+  milk-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: spaceman/2_milk
           keymap: default
+          controller: helios
           output-dir: milk
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: milk
+          dst: ./
+          storage-branch: main
+
+  milk-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: spaceman/2_milk
+          keymap: via
+          controller: helios
+          output-dir: milk
+          local-keymap-path: milk/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: milk
@@ -31,7 +51,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@vial-qmk
+      - uses: keebd/build-qmk-fw@vial-qmk
         with:
           keyboard: spaceman/2_milk
           keymap: vial
