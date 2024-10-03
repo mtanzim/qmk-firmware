@@ -7,46 +7,15 @@ on:
     - main
     paths:
     - .github/workflows/eternal_keypad.yml
+    - eternal_keypad/**
 
 jobs:
-  eternal_keypad-default:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: eternal_keypad
-          keymap: default
-          output-dir: eternal_keypad
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: eternal_keypad
-          dst: ./
-          storage-branch: main
-
-  eternal_keypad-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: eternal_keypad
-          keymap: via
-          output-dir: eternal_keypad
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: eternal_keypad
-          dst: ./
-          storage-branch: main
-
   eternal_keypad-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: eternal_keypad
           keymap: default
@@ -63,12 +32,48 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: eternal_keypad
           keymap: via
           controller: helios
           output-dir: eternal_keypad
+          local-keymap-path: eternal_keypad/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: eternal_keypad
+          dst: ./
+          storage-branch: main
+
+  eternal_keypad-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: eternal_keypad
+          keymap: default
+          controller: svlinky
+          output-dir: eternal_keypad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: eternal_keypad
+          dst: ./
+          storage-branch: main
+
+  eternal_keypad-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: eternal_keypad
+          keymap: via
+          controller: svlinky
+          output-dir: eternal_keypad
+          local-keymap-path: eternal_keypad/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: eternal_keypad
