@@ -10,7 +10,7 @@ on:
     - narfpad/**
 
 jobs:
-  narfpad-default-helios:
+  narfpad-default:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +18,6 @@ jobs:
       - uses: keebd/build-qmk-fw@main
         with:
           keyboard: narfpad
-          controller: helios
           local-keyboard-path: narfpad
           output-dir: narfpad
       - uses: sylvanld/action-storage@v1
@@ -27,7 +26,7 @@ jobs:
           dst: ./
           storage-branch: main
 
-  narfpad-via-helios:
+  narfpad-via:
     runs-on: ubuntu-latest
 
     steps:
@@ -36,42 +35,6 @@ jobs:
         with:
           keyboard: narfpad
           keymap: via
-          controller: helios
-          local-keyboard-path: narfpad
-          output-dir: narfpad
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: narfpad
-          dst: ./
-          storage-branch: main
-
-  narfpad-default-svlinky:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: keebd/build-qmk-fw@main
-        with:
-          keyboard: narfpad
-          controller: svlinky
-          local-keyboard-path: narfpad
-          output-dir: narfpad
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: narfpad
-          dst: ./
-          storage-branch: main
-
-  narfpad-via-svlinky:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: keebd/build-qmk-fw@main
-        with:
-          keyboard: narfpad
-          keymap: via
-          controller: svlinky
           local-keyboard-path: narfpad
           output-dir: narfpad
       - uses: sylvanld/action-storage@v1

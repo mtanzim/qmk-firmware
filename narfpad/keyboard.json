@@ -18,8 +18,8 @@
             {"pin_a": "GP1", "pin_b": "GP2"}
         ]
     },
-    "processor": "atmega32u4",
-    "bootloader": "caterina",
+    "processor": "RP2040",
+    "bootloader": "rp2040",
     "features": {
         "encoder": true
     },
