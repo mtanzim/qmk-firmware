@@ -7,48 +7,15 @@ on:
     - main
     paths:
     - .github/workflows/ergodash.yml
-    - ergodash/keymaps/**
+    - ergodash/**
 
 jobs:
-  ergodash-default:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: omkbd/ergodash/rev1
-          keymap: default
-          output-dir: ergodash
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: ergodash
-          dst: ./
-          storage-branch: main
-
-  ergodash-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: omkbd/ergodash/rev1
-          keymap: via
-          output-dir: ergodash
-          local-keymap-path: ergodash/keymaps/via
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: ergodash
-          dst: ./
-          storage-branch: main
-
   ergodash-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: omkbd/ergodash/rev1
           keymap: default
@@ -65,13 +32,82 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: omkbd/ergodash/rev1
           keymap: via
           controller: helios
           output-dir: ergodash
           local-keymap-path: ergodash/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: ergodash
+          dst: ./
+          storage-branch: main
+
+  ergodash-vial-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: omkbd/ergodash/rev1
+          keymap: vial
+          controller: helios
+          output-dir: ergodash
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: ergodash
+          dst: ./
+          storage-branch: main
+
+  ergodash-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: omkbd/ergodash/rev1
+          keymap: default
+          controller: svlinky
+          output-dir: ergodash
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: ergodash
+          dst: ./
+          storage-branch: main
+
+  ergodash-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: omkbd/ergodash/rev1
+          keymap: via
+          controller: svlinky
+          output-dir: ergodash
+          local-keymap-path: ergodash/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: ergodash
+          dst: ./
+          storage-branch: main
+
+  ergodash-vial-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: omkbd/ergodash/rev1
+          keymap: vial
+          controller: svlinky
+          output-dir: ergodash
       - uses: sylvanld/action-storage@v1
         with:
           src: ergodash
