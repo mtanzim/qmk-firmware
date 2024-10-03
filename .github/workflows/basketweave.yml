@@ -26,3 +26,20 @@ jobs:
           src: basketweave
           dst: ./
           storage-branch: main
+
+  basketweave-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: basketweave
+          keymap: via
+          output-dir: basketweave
+          local-keymap-path: basketweave/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: basketweave
+          dst: ./
+          storage-branch: main
