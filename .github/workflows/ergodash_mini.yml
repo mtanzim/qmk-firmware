@@ -7,48 +7,15 @@ on:
     - main
     paths:
     - .github/workflows/ergodash_mini.yml
-    - ergodash_mini/keymaps/**
+    - ergodash_mini/**
 
 jobs:
-  ergodash_mini-default:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: omkbd/ergodash/mini
-          keymap: default
-          output-dir: ergodash_mini
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: ergodash_mini
-          dst: ./
-          storage-branch: main
-
-  ergodash_mini-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: omkbd/ergodash/mini
-          keymap: via
-          output-dir: ergodash_mini
-          local-keymap-path: ergodash_mini/keymaps/via
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: ergodash_mini
-          dst: ./
-          storage-branch: main
-
   ergodash_mini-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: omkbd/ergodash/mini
           keymap: default
@@ -65,11 +32,46 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: omkbd/ergodash/mini
           keymap: via
           controller: helios
+          output-dir: ergodash_mini
+          local-keymap-path: ergodash_mini/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: ergodash_mini
+          dst: ./
+          storage-branch: main
+
+  ergodash_mini-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: omkbd/ergodash/mini
+          keymap: default
+          controller: svlinky
+          output-dir: ergodash_mini
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: ergodash_mini
+          dst: ./
+          storage-branch: main
+
+  ergodash_mini-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: omkbd/ergodash/mini
+          keymap: via
+          controller: svlinky
           output-dir: ergodash_mini
           local-keymap-path: ergodash_mini/keymaps/via
       - uses: sylvanld/action-storage@v1
