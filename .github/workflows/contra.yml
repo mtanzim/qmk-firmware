@@ -9,44 +9,12 @@ on:
     - .github/workflows/contra.yml
 
 jobs:
-  contra-default:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: contra
-          keymap: default
-          output-dir: contra
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: contra
-          dst: ./
-          storage-branch: main
-
-  contra-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: contra
-          keymap: via
-          output-dir: contra
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: contra
-          dst: ./
-          storage-branch: main
-
   contra-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: contra
           keymap: default
@@ -63,11 +31,79 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: contra
           keymap: via
           controller: helios
+          output-dir: contra
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: contra
+          dst: ./
+          storage-branch: main
+
+  contra-vial-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: contra
+          keymap: vial
+          controller: helios
+          output-dir: contra
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: contra
+          dst: ./
+          storage-branch: main
+
+  contra-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: contra
+          keymap: default
+          controller: svlinky
+          output-dir: contra
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: contra
+          dst: ./
+          storage-branch: main
+
+  contra-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: contra
+          keymap: via
+          controller: svlinky
+          output-dir: contra
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: contra
+          dst: ./
+          storage-branch: main
+
+  contra-vial-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: contra
+          keymap: vial
+          controller: svlinky
           output-dir: contra
       - uses: sylvanld/action-storage@v1
         with:
