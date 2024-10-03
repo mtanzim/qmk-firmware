@@ -7,47 +7,15 @@ on:
     - main
     paths:
     - .github/workflows/dumbpad_oled.yml
-    - draculad/keymaps/**
+    - dumbpad_oled/**
 
 jobs:
-  dumbpad_oled-default:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: dumbpad/v1x_oled
-          keymap: default
-          output-dir: dumbpad_oled
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: dumbpad_oled
-          dst: ./
-          storage-branch: main
-
-  dumbpad_oled-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: dumbpad/v1x_oled
-          keymap: via
-          output-dir: dumbpad_oled
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: dumbpad_oled
-          dst: ./
-          storage-branch: main
-
   dumbpad_oled-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: dumbpad/v1x_oled
           keymap: default
@@ -64,12 +32,48 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: dumbpad/v1x_oled
           keymap: via
           controller: helios
           output-dir: dumbpad_oled
+          local-keymap-path: dumbpad_oled/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: dumbpad_oled
+          dst: ./
+          storage-branch: main
+
+  dumbpad_oled-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: dumbpad/v1x_oled
+          keymap: default
+          controller: svlinky
+          output-dir: dumbpad_oled
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: dumbpad_oled
+          dst: ./
+          storage-branch: main
+
+  dumbpad_oled-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: dumbpad/v1x_oled
+          keymap: via
+          controller: svlinky
+          output-dir: dumbpad_oled
+          local-keymap-path: dumbpad_oled/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: dumbpad_oled
