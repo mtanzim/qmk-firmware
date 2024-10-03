@@ -7,7 +7,7 @@ on:
     - main
     paths:
     - .github/workflows/modelh.yml
-    - modelh/keymaps/**
+    - modelh/**
 
 jobs:
   modelh-default:
@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: ibm/model_m/modelh
           keymap: default
@@ -31,12 +31,28 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: ibm/model_m/modelh
           keymap: via
           output-dir: modelh
           local-keymap-path: modelh/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: modelh
+          dst: ./
+          storage-branch: main
+
+  modelh-vial:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: ibm/model_m/modelh
+          keymap: vial
+          output-dir: modelh
       - uses: sylvanld/action-storage@v1
         with:
           src: modelh
