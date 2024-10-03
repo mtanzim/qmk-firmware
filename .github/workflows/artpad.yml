@@ -10,13 +10,30 @@ on:
     - artpad/**
 
 jobs:
+  artpad-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: artpad
+          keymap: default
+          controller: helios
+          local-keyboard-path: artpad
+          output-dir: artpad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: artpad
+          dst: ./
+          storage-branch: main
 
   artpad-vial-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@vial-qmk
+      - uses: keebd/build-qmk-fw@vial-qmk
         with:
           keyboard: artpad
           keymap: vial
@@ -28,3 +45,39 @@ jobs:
           src: artpad
           dst: ./
           storage-branch: main
+
+  artpad-default-svlinky:
+      runs-on: ubuntu-latest
+  
+      steps:
+        - uses: actions/checkout@v4
+        - uses: keebd/build-qmk-fw@vial-qmk
+          with:
+            keyboard: artpad
+            keymap: vial
+            controller: svlinky
+            local-keyboard-path: artpad
+            output-dir: artpad
+        - uses: sylvanld/action-storage@v1
+          with:
+            src: artpad
+            dst: ./
+            storage-branch: main
+  
+    artpad-vial-svlinky:
+      runs-on: ubuntu-latest
+  
+      steps:
+        - uses: actions/checkout@v4
+        - uses: keebd/build-qmk-fw@vial-qmk
+          with:
+            keyboard: artpad
+            keymap: vial
+            controller: svlinky
+            local-keyboard-path: artpad
+            output-dir: artpad
+        - uses: sylvanld/action-storage@v1
+          with:
+            src: artpad
+            dst: ./
+            storage-branch: main
