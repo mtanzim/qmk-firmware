@@ -7,46 +7,15 @@ on:
     - main
     paths:
     - .github/workflows/lily58.yml
+    - lily58/**
 
 jobs:
-  lily58-default:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: lily58
-          keymap: default
-          output-dir: lily58
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: lily58
-          dst: ./
-          storage-branch: main
-
-  lily58-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: lily58
-          keymap: via
-          output-dir: lily58
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: lily58
-          dst: ./
-          storage-branch: main
-
   lily58-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: lily58
           keymap: default
@@ -63,11 +32,81 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: lily58
           keymap: via
           controller: helios
+          output-dir: lily58
+          local-keymap-path: lily58/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: lily58
+          dst: ./
+          storage-branch: main
+
+  lily58-vial-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: lily58
+          keymap: vial
+          controller: helios
+          output-dir: lily58
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: lily58
+          dst: ./
+          storage-branch: main
+
+  lily58-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: lily58
+          keymap: default
+          controller: svlinky
+          output-dir: lily58
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: lily58
+          dst: ./
+          storage-branch: main
+
+  lily58-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: lily58
+          keymap: via
+          controller: svlinky
+          output-dir: lily58
+          local-keymap-path: lily58/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: lily58
+          dst: ./
+          storage-branch: main
+
+  lily58-vial-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: lily58
+          keymap: vial
+          controller: svlinky
           output-dir: lily58
       - uses: sylvanld/action-storage@v1
         with:
