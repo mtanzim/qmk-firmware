@@ -37,6 +37,7 @@ jobs:
           keymap: via
           controller: helios
           output-dir: contra
+          local-keymap-path: contra/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: contra
@@ -88,6 +89,7 @@ jobs:
           keymap: via
           controller: svlinky
           output-dir: contra
+          local-keymap-path: contra/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: contra
