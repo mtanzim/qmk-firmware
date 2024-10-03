@@ -54,7 +54,7 @@ jobs:
         - uses: keebd/build-qmk-fw@vial-qmk
           with:
             keyboard: artpad
-            keymap: vial
+            keymap: default
             controller: svlinky
             local-keyboard-path: artpad
             output-dir: artpad
@@ -64,20 +64,20 @@ jobs:
             dst: ./
             storage-branch: main
   
-    artpad-vial-svlinky:
-      runs-on: ubuntu-latest
-  
-      steps:
-        - uses: actions/checkout@v4
-        - uses: keebd/build-qmk-fw@vial-qmk
-          with:
-            keyboard: artpad
-            keymap: vial
-            controller: svlinky
-            local-keyboard-path: artpad
-            output-dir: artpad
-        - uses: sylvanld/action-storage@v1
-          with:
-            src: artpad
-            dst: ./
-            storage-branch: main
+  artpad-vial-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: artpad
+          keymap: vial
+          controller: svlinky
+          local-keyboard-path: artpad
+          output-dir: artpad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: artpad
+          dst: ./
+          storage-branch: main
