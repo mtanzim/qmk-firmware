@@ -62,3 +62,55 @@ jobs:
           src: milk
           dst: ./
           storage-branch: main
+
+  milk-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: spaceman/2_milk
+          keymap: default
+          controller: svlinky
+          output-dir: milk
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: milk
+          dst: ./
+          storage-branch: main
+
+  milk-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: spaceman/2_milk
+          keymap: via
+          controller: svlinky
+          output-dir: milk
+          local-keymap-path: milk/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: milk
+          dst: ./
+          storage-branch: main
+
+  milk-vial-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: spaceman/2_milk
+          keymap: vial
+          controller: svlinky
+          output-dir: milk
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: milk
+          dst: ./
+          storage-branch: main
