@@ -10,13 +10,12 @@ on:
     - paintbrush/**
 
 jobs:
-
   paintbrush-left-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: paintbrush
           keymap: left
@@ -34,11 +33,47 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: paintbrush
           keymap: right
           controller: helios
+          local-keyboard-path: paintbrush
+          output-dir: paintbrush
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: paintbrush
+          dst: ./
+          storage-branch: main
+
+  paintbrush-left-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: paintbrush
+          keymap: left
+          controller: svlinky
+          local-keyboard-path: paintbrush
+          output-dir: paintbrush
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: paintbrush
+          dst: ./
+          storage-branch: main
+
+  paintbrush-right-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: paintbrush
+          keymap: right
+          controller: svlinky
           local-keyboard-path: paintbrush
           output-dir: paintbrush
       - uses: sylvanld/action-storage@v1
