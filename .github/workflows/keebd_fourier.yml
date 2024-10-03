@@ -10,47 +10,12 @@ on:
     - keebd_fourier/**
 
 jobs:
-
-  keebd-fourier-default:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
-        with:
-          keyboard: keebd_fourier
-          keymap: default
-          local-keyboard-path: keebd_fourier
-          output-dir: keebd_fourier
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: keebd_fourier
-          dst: ./
-          storage-branch: main
-
-  keebd-fourier-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
-        with:
-          keyboard: keebd_fourier
-          keymap: via
-          local-keyboard-path: keebd_fourier
-          output-dir: keebd_fourier
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: keebd_fourier
-          dst: ./
-          storage-branch: main
-
   keebd-fourier-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: keebd_fourier
           keymap: default
@@ -68,11 +33,47 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: keebd_fourier
           keymap: via
           controller: helios
+          local-keyboard-path: keebd_fourier
+          output-dir: keebd_fourier
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: keebd_fourier
+          dst: ./
+          storage-branch: main
+
+  keebd-fourier-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: keebd_fourier
+          keymap: default
+          controller: svlinky
+          local-keyboard-path: keebd_fourier
+          output-dir: keebd_fourier
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: keebd_fourier
+          dst: ./
+          storage-branch: main
+
+  keebd-fourier-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: keebd_fourier
+          keymap: via
+          controller: svlinky
           local-keyboard-path: keebd_fourier
           output-dir: keebd_fourier
       - uses: sylvanld/action-storage@v1
