@@ -10,45 +10,12 @@ on:
     - chocv/keymaps/**
 
 jobs:
-  chocv-default:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: chocv
-          keymap: default
-          output-dir: chocv
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: chocv
-          dst: ./
-          storage-branch: main
-
-  chocv-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: chocv
-          keymap: via
-          output-dir: chocv
-          local-keymap-path: chocv/keymaps/via
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: chocv
-          dst: ./
-          storage-branch: main
-
   chocv-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: chocv
           keymap: default
@@ -65,11 +32,46 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: chocv
           keymap: via
           controller: helios
+          output-dir: chocv
+          local-keymap-path: chocv/keymaps/via
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: chocv
+          dst: ./
+          storage-branch: main
+
+  chocv-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: chocv
+          keymap: default
+          controller: svlinky
+          output-dir: chocv
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: chocv
+          dst: ./
+          storage-branch: main
+
+  chocv-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: chocv
+          keymap: via
+          controller: svlinky
           output-dir: chocv
           local-keymap-path: chocv/keymaps/via
       - uses: sylvanld/action-storage@v1
