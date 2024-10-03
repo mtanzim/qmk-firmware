@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: basketweave
           keymap: default
