@@ -7,6 +7,7 @@ on:
     - main
     paths:
     - .github/workflows/corne.yml
+    - corne/**
 
 jobs:
   corne-default-helios:
@@ -20,7 +21,24 @@ jobs:
           keymap: default
           controller: helios
           output-dir: corne
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: corne
+          dst: ./
+          storage-branch: main
 
+  corne-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: crkbd/rev1
+          keymap: via
+          controller: helios
+          output-dir: corne
+          local-keymap-path: corne/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: corne
@@ -38,7 +56,6 @@ jobs:
           keymap: vial
           controller: helios
           output-dir: corne
-
       - uses: sylvanld/action-storage@v1
         with:
           src: corne
@@ -56,7 +73,24 @@ jobs:
           keymap: default
           controller: svlinky
           output-dir: corne
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: corne
+          dst: ./
+          storage-branch: main
 
+  corne-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: crkbd/rev1
+          keymap: via
+          controller: svlinky
+          output-dir: corne
+          local-keymap-path: corne/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: corne
@@ -74,7 +108,6 @@ jobs:
           keymap: vial
           controller: svlinky
           output-dir: corne
-
       - uses: sylvanld/action-storage@v1
         with:
           src: corne
