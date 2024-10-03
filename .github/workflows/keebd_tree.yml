@@ -10,47 +10,12 @@ on:
     - keebd_tree/**
 
 jobs:
-
-  keebd-tree-default:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
-        with:
-          keyboard: keebd_tree
-          keymap: default
-          local-keyboard-path: keebd_tree
-          output-dir: keebd_tree
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: keebd_tree
-          dst: ./
-          storage-branch: main
-
-  keebd-tree-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
-        with:
-          keyboard: keebd_tree
-          keymap: via
-          local-keyboard-path: keebd_tree
-          output-dir: keebd_tree
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: keebd_tree
-          dst: ./
-          storage-branch: main
-
   keebd-tree-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: keebd_tree
           keymap: default
@@ -68,11 +33,47 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: keebd_tree
           keymap: via
           controller: helios
+          local-keyboard-path: keebd_tree
+          output-dir: keebd_tree
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: keebd_tree
+          dst: ./
+          storage-branch: main
+
+  keebd-tree-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: keebd_tree
+          keymap: default
+          controller: svlinky
+          local-keyboard-path: keebd_tree
+          output-dir: keebd_tree
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: keebd_tree
+          dst: ./
+          storage-branch: main
+
+  keebd-tree-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: keebd_tree
+          keymap: via
+          controller: svlinky
           local-keyboard-path: keebd_tree
           output-dir: keebd_tree
       - uses: sylvanld/action-storage@v1
