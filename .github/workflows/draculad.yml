@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: draculad
           keymap: default
@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: draculad
           keymap: via
@@ -50,7 +50,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: draculad
           keymap: default
@@ -67,7 +67,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: draculad
           keymap: via
