@@ -7,6 +7,7 @@ on:
     - main
     paths:
     - .github/workflows/lumberjack.yml
+    - lumberjack/**
 
 jobs:
 
@@ -15,11 +16,28 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: peej/lumberjack
           keymap: default
           output-dir: lumberjack
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: lumberjack
+          dst: ./
+          storage-branch: main
+
+  lumberjack-via:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: peej/lumberjack
+          keymap: via
+          output-dir: lumberjack
+          local-keymap-path: lumberjack/keymaps/via
       - uses: sylvanld/action-storage@v1
         with:
           src: lumberjack
@@ -31,7 +49,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@vial-qmk
+      - uses: keebd/build-qmk-fw@vial-qmk
         with:
           keyboard: peej/lumberjack
           keymap: vial
