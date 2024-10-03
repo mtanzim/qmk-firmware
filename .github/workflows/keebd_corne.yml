@@ -15,14 +15,31 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: keebd_corne
           keymap: default
           controller: helios
           local-keyboard-path: keebd_corne
           output-dir: keebd_corne
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: keebd_corne
+          dst: ./
+          storage-branch: main
 
+  keebd-corne-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: keebd_corne
+          keymap: via
+          controller: helios
+          local-keyboard-path: keebd_corne
+          output-dir: keebd_corne
       - uses: sylvanld/action-storage@v1
         with:
           src: keebd_corne
@@ -34,14 +51,67 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@vial-qmk
+      - uses: keebd/build-qmk-fw@vial-qmk
         with:
           keyboard: keebd_corne
           keymap: vial
           controller: helios
           local-keyboard-path: keebd_corne
           output-dir: keebd_corne
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: keebd_corne
+          dst: ./
+          storage-branch: main
 
+  keebd-corne-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: keebd_corne
+          keymap: default
+          controller: svlinky
+          local-keyboard-path: keebd_corne
+          output-dir: keebd_corne
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: keebd_corne
+          dst: ./
+          storage-branch: main
+
+  keebd-corne-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: keebd_corne
+          keymap: via
+          controller: svlinky
+          local-keyboard-path: keebd_corne
+          output-dir: keebd_corne
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: keebd_corne
+          dst: ./
+          storage-branch: main
+
+  keebd-corne-vial-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: keebd_corne
+          keymap: vial
+          controller: svlinky
+          local-keyboard-path: keebd_corne
+          output-dir: keebd_corne
       - uses: sylvanld/action-storage@v1
         with:
           src: keebd_corne
