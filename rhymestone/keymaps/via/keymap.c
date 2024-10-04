@@ -96,65 +96,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #ifdef OLED_ENABLE
 
-typedef struct {
-  uint8_t state;
-  char name[8];
-}LAYER_DISPLAY_NAME;
-
-#define LAYER_DISPLAY_MAX 5
-const LAYER_DISPLAY_NAME layer_display_name[LAYER_DISPLAY_MAX] = {
-  {L_BASE, "Base"},
-  {L_BASE + 1, "Base"},
-  {L_LOWER, "Lower"},
-  {L_RAISE, "Raise"},
-  {L_ADJUST_TRI, "Adjust"}
-};
-
-static inline const char* get_leyer_status(void) {
-
-  for (uint8_t i = 0; i < LAYER_DISPLAY_MAX; ++i) {
-    if (layer_state == 0 && layer_display_name[i].state == default_layer_state) {
-
-      return layer_display_name[i].name;
-    } else if (layer_state != 0 && layer_display_name[i].state == layer_state) {
-
-      return layer_display_name[i].name;
-    }
-  }
-
-  return "?";
-}
-
-static char layer_status_buf[24] = "Layer state ready.\n";
-static inline void update_keymap_status(void) {
-
-  snprintf(layer_status_buf, sizeof(layer_status_buf) - 1, "OS:%s Layer:%s\n",
-    keymap_config.swap_lalt_lgui? "win" : "mac", get_leyer_status());
-}
-
-static inline void render_keymap_status(void) {
-
-  oled_write(layer_status_buf, false);
-}
-
-#define UPDATE_KEYMAP_STATUS() update_keymap_status()
-
-static inline void render_status(void) {
-
-  UPDATE_LED_STATUS();
-  RENDER_LED_STATUS();
-  render_keymap_status();
-  RENDER_LOCK_STATUS();
-  RENDER_KEY_STATUS();
-}
-
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-
-  if (is_keyboard_master())
-    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
-  return rotation;
-}
-
 void render_logo(void) {
 
   static const char PROGMEM logo_buf[]={
@@ -236,6 +177,65 @@ void render_led_status(void) {
   oled_write(led_buf, false);
 }
 #endif
+
+typedef struct {
+  uint8_t state;
+  char name[8];
+}LAYER_DISPLAY_NAME;
+
+#define LAYER_DISPLAY_MAX 5
+const LAYER_DISPLAY_NAME layer_display_name[LAYER_DISPLAY_MAX] = {
+  {L_BASE, "Base"},
+  {L_BASE + 1, "Base"},
+  {L_LOWER, "Lower"},
+  {L_RAISE, "Raise"},
+  {L_ADJUST_TRI, "Adjust"}
+};
+
+static inline const char* get_leyer_status(void) {
+
+  for (uint8_t i = 0; i < LAYER_DISPLAY_MAX; ++i) {
+    if (layer_state == 0 && layer_display_name[i].state == default_layer_state) {
+
+      return layer_display_name[i].name;
+    } else if (layer_state != 0 && layer_display_name[i].state == layer_state) {
+
+      return layer_display_name[i].name;
+    }
+  }
+
+  return "?";
+}
+
+static char layer_status_buf[24] = "Layer state ready.\n";
+static inline void update_keymap_status(void) {
+
+  snprintf(layer_status_buf, sizeof(layer_status_buf) - 1, "OS:%s Layer:%s\n",
+    keymap_config.swap_lalt_lgui? "win" : "mac", get_leyer_status());
+}
+
+static inline void render_keymap_status(void) {
+
+  oled_write(layer_status_buf, false);
+}
+
+#define UPDATE_KEYMAP_STATUS() update_keymap_status()
+
+static inline void render_status(void) {
+
+  UPDATE_LED_STATUS();
+  RENDER_LED_STATUS();
+  render_keymap_status();
+  RENDER_LOCK_STATUS();
+  RENDER_KEY_STATUS();
+}
+
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+
+  if (is_keyboard_master())
+    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+  return rotation;
+}
 
 bool oled_task_user(void) {
 
