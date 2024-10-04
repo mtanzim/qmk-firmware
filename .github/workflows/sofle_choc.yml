@@ -7,46 +7,15 @@ on:
     - main
     paths:
     - .github/workflows/sofle_choc.yml
+    - sofle_choc/**
 
 jobs:
-  sofle_choc-default:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: sofle_choc
-          keymap: default
-          output-dir: sofle_choc
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: sofle_choc
-          dst: ./
-          storage-branch: main
-
-  sofle_choc-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
-        with:
-          keyboard: sofle_choc
-          keymap: via
-          output-dir: sofle_choc
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: sofle_choc
-          dst: ./
-          storage-branch: main
-
   sofle_choc-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: sofle_choc
           keymap: default
@@ -63,11 +32,81 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: sofle_choc
           keymap: via
           controller: helios
+          local-keymap-path: sofle_choc/keymaps/via
+          output-dir: sofle_choc
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle_choc
+          dst: ./
+          storage-branch: main
+
+  sofle_choc-vial-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: sofle_choc
+          keymap: vial
+          controller: helios
+          output-dir: sofle_choc
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle_choc
+          dst: ./
+          storage-branch: main
+
+  sofle_choc-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: sofle_choc
+          keymap: default
+          controller: svlinky
+          output-dir: sofle_choc
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle_choc
+          dst: ./
+          storage-branch: main
+
+  sofle_choc-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: sofle_choc
+          keymap: via
+          controller: svlinky
+          local-keymap-path: sofle_choc/keymaps/via
+          output-dir: sofle_choc
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: sofle_choc
+          dst: ./
+          storage-branch: main
+
+  sofle_choc-vial-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: sofle_choc
+          keymap: vial
+          controller: svlinky
           output-dir: sofle_choc
       - uses: sylvanld/action-storage@v1
         with:
