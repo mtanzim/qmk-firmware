@@ -10,15 +10,16 @@ on:
     - treadstone48/**
 
 jobs:
-  treadstone48-default:
+  treadstone48-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: marksard/treadstone48
           keymap: default
+          controller: helios
           output-dir: treadstone48
       - uses: sylvanld/action-storage@v1
         with:
@@ -26,16 +27,52 @@ jobs:
           dst: ./
           storage-branch: main
 
-  treadstone48-default-helios:
+  treadstone48-via-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@v1
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: marksard/treadstone48
+          keymap: via
+          controller: helios
+          local-keymap-path: treadstone48/keymaps/via
+          output-dir: treadstone48
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: treadstone48
+          dst: ./
+          storage-branch: main
+
+  treadstone48-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: marksard/treadstone48
           keymap: default
-          controller: helios
+          controller: svlinky
+          output-dir: treadstone48
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: treadstone48
+          dst: ./
+          storage-branch: main
+
+  treadstone48-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: marksard/treadstone48
+          keymap: via
+          controller: svlinky
+          local-keymap-path: treadstone48/keymaps/via
           output-dir: treadstone48
       - uses: sylvanld/action-storage@v1
         with:
