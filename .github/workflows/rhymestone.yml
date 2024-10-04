@@ -7,18 +7,19 @@ on:
     - main
     paths:
     - .github/workflows/rhymestone.yml
-    - rhymestone/keymaps/**
+    - rhymestone/**
 
 jobs:
-  rhymestone-default:
+  rhymestone-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: marksard/rhymestone
           keymap: default
+          controller: helios
           output-dir: rhymestone
       - uses: sylvanld/action-storage@v1
         with:
@@ -26,16 +27,52 @@ jobs:
           dst: ./
           storage-branch: main
 
-  rhymestone-default-helios:
+  rhymestone-via-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: marksard/rhymestone
+          keymap: via
+          controller: helios
+          local-keymap-path: rhymestone/keymaps/via
+          output-dir: rhymestone
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: rhymestone
+          dst: ./
+          storage-branch: main
+
+  rhymestone-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: marksard/rhymestone
           keymap: default
-          controller: helios
+          controller: svlinky
+          output-dir: rhymestone
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: rhymestone
+          dst: ./
+          storage-branch: main
+
+  rhymestone-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: marksard/rhymestone
+          keymap: via
+          controller: svlinky
+          local-keymap-path: rhymestone/keymaps/via
           output-dir: rhymestone
       - uses: sylvanld/action-storage@v1
         with:
