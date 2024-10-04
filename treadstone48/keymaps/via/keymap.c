@@ -14,7 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-#include "../common/oled_helper.h"
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -104,8 +103,84 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #define L_ADJUST_TRI (L_ADJUST|L_RAISE|L_LOWER)
 
 #ifdef OLED_ENABLE
-#include <stdio.h>
-#include <string.h>
+
+void render_logo(void) {
+
+  const char logo_buf[]={
+    0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
+    0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
+    0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,
+    0};
+
+  oled_write(logo_buf, false);
+}
+
+void render_lock_status(void) {
+
+  // Host Keyboard LED Status
+  led_t led_state = host_keyboard_led_state();
+
+  oled_write_P(PSTR("Lock:"), false);
+  if (led_state.num_lock) {
+    oled_write_P(PSTR("Num "), false);
+  }
+  if (led_state.caps_lock) {
+    oled_write_P(PSTR("Caps "), false);
+  }
+  if (led_state.scroll_lock) {
+    oled_write_P(PSTR("Scrl"), false);
+  }
+
+  oled_write_P(PSTR("\n"), false);
+}
+
+static char keylog_buf[24] = "Key state ready.\n";
+const char code_to_name[60] = {
+    ' ', ' ', ' ', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
+    'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+    'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+    'R', 'E', 'B', 'T', ' ', '-', ' ', '@', ' ', ' ',
+    ' ', ';', ':', ' ', ',', '.', '/', ' ', ' ', ' '};
+
+void update_key_status(uint16_t keycode, keyrecord_t *record) {
+
+  if (!record->event.pressed) return;
+
+  char name = (keycode < 60) ? code_to_name[keycode] : ' ';
+  snprintf(keylog_buf, sizeof(keylog_buf) - 1, "Key:%dx%d %2x %c\n",
+          record->event.key.row, record->event.key.col,
+          (uint16_t)keycode, name);
+}
+
+void render_key_status(void) {
+
+  oled_write(keylog_buf, false);
+}
+
+#ifdef RGBLIGHT_ENABLE
+extern rgblight_config_t rgblight_config;
+
+static char led_buf[24] = "LED state ready.\n";
+rgblight_config_t rgblight_config_bak;
+void update_led_status(void) {
+
+  if (rgblight_config_bak.enable != rgblight_config.enable ||
+      rgblight_config_bak.mode != rgblight_config.mode ||
+      rgblight_config_bak.hue != rgblight_config.hue ||
+      rgblight_config_bak.sat != rgblight_config.sat ||
+      rgblight_config_bak.val != rgblight_config.val
+  ) {
+    snprintf(led_buf, sizeof(led_buf) - 1, "LED%c:%2d hsv:%2d %2d %2d\n",
+      rgblight_config.enable ? '*' : '.', (uint8_t)rgblight_config.mode,
+      (uint8_t)(rgblight_config.hue / RGBLIGHT_HUE_STEP),
+      (uint8_t)(rgblight_config.sat / RGBLIGHT_SAT_STEP),
+      (uint8_t)(rgblight_config.val / RGBLIGHT_VAL_STEP));
+      rgblight_config_bak = rgblight_config;
+  }
+  oled_write(led_buf, false);
+}
+#endif
 
 typedef struct {
   uint8_t state;
@@ -138,37 +213,27 @@ static inline const char* get_leyer_status(void) {
 
 static char layer_status_buf[24] = "Layer state ready.\n";
 static inline void update_keymap_status(void) {
-
   snprintf(layer_status_buf, sizeof(layer_status_buf) - 1, "OS:%s Layer:%s\n",
     keymap_config.swap_lalt_lgui? "win" : "mac", get_leyer_status());
-}
-
-static inline void render_keymap_status(void) {
 
   oled_write(layer_status_buf, false);
 }
 
-#define UPDATE_KEYMAP_STATUS() update_keymap_status()
-
 static inline void render_status(void) {
 
-  UPDATE_LED_STATUS();
-  RENDER_LED_STATUS();
-  render_keymap_status();
-  UPDATE_LOCK_STATUS();
-  RENDER_LOCK_STATUS();
-  RENDER_KEY_STATUS();
+  update_led_status();
+  update_keymap_status();
+  render_lock_status();
+  render_key_status();
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-
-//   if (is_keyboard_master())
-//     return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+  if (is_keyboard_master())
+    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
   return rotation;
 }
 
 bool oled_task_user(void) {
-
   if (is_keyboard_master()) {
     render_status();
   } else {
@@ -177,55 +242,4 @@ bool oled_task_user(void) {
     return false;
 }
 
-#else
-
-#define UPDATE_KEYMAP_STATUS()
-
 #endif
-
-static inline void update_change_layer(bool pressed, uint8_t layer1, uint8_t layer2, uint8_t layer3) {
-
-  pressed ? layer_on(layer1) : layer_off(layer1);
-  IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2) ? layer_on(layer3) : layer_off(layer3);
-}
-
-int RGB_current_mode;
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
-  UPDATE_KEY_STATUS(keycode, record);
-
-  bool result = false;
-  switch (keycode) {
-    case LOWER:
-      update_change_layer(record->event.pressed, _LOWER, _RAISE, _ADJUST);
-      break;
-    case RAISE:
-      update_change_layer(record->event.pressed, _RAISE, _LOWER, _ADJUST);
-        break;
-    case KANJI:
-      if (record->event.pressed) {
-        if (keymap_config.swap_lalt_lgui == false) {
-          register_code(KC_LNG2);
-        } else {
-          SEND_STRING(SS_LALT("`"));
-        }
-      } else {
-        unregister_code(KC_LNG2);
-      }
-      break;
-    #ifdef RGBLIGHT_ENABLE
-      case RGBRST:
-          if (record->event.pressed) {
-            eeconfig_update_rgblight_default();
-            rgblight_enable();
-          }
-        break;
-    #endif
-    default:
-      result = true;
-      break;
-  }
-
-  UPDATE_KEYMAP_STATUS();
-  return result;
-}
