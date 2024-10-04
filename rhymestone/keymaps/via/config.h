@@ -24,6 +24,8 @@
 // If you plug in the USB on the right side, please enable MASTER_RIGHT
 // #define MASTER_RIGHT
 #ifdef OLED_ENABLE
+#include <stdint.h>
+#include "action.h"
 
 void render_logo(void);
 void update_key_status(uint16_t keycode, keyrecord_t *record);
