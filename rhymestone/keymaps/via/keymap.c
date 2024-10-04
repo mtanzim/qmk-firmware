@@ -13,11 +13,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "host.h"
-#include "rgblight.h"
-#include <stdio.h>
-#include <string.h>
-
 #include QMK_KEYBOARD_H
 
 enum layer_number {
@@ -175,10 +170,6 @@ void update_led_status(void) {
       (uint8_t)(rgblight_config.val / RGBLIGHT_VAL_STEP));
       rgblight_config_bak = rgblight_config;
   }
-}
-
-void render_led_status(void) {
-
   oled_write(led_buf, false);
 }
 #endif
@@ -214,36 +205,27 @@ static inline const char* get_leyer_status(void) {
 
 static char layer_status_buf[24] = "Layer state ready.\n";
 static inline void update_keymap_status(void) {
-
   snprintf(layer_status_buf, sizeof(layer_status_buf) - 1, "OS:%s Layer:%s\n",
     keymap_config.swap_lalt_lgui? "win" : "mac", get_leyer_status());
-}
-
-static inline void render_keymap_status(void) {
 
   oled_write(layer_status_buf, false);
 }
 
-#define UPDATE_KEYMAP_STATUS() update_keymap_status()
-
 static inline void render_status(void) {
 
-  UPDATE_LED_STATUS();
-  RENDER_LED_STATUS();
-  render_keymap_status();
-  RENDER_LOCK_STATUS();
-  RENDER_KEY_STATUS();
+  update_led_status();
+  update_keymap_status();
+  render_lock_status();
+  render_key_status();
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-
   if (is_keyboard_master())
     return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
   return rotation;
 }
 
 bool oled_task_user(void) {
-
   if (is_keyboard_master()) {
     render_status();
   } else {
@@ -252,60 +234,4 @@ bool oled_task_user(void) {
     return false;
 }
 
-#else
-
-#define UPDATE_KEYMAP_STATUS()
-
 #endif
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
-  UPDATE_KEY_STATUS(keycode, record);
-
-  bool result = false;
-  switch (keycode) {
-    case LOWER:
-      if (record->event.pressed) {
-        layer_on(_LOWER);
-      } else {
-        layer_off(_LOWER);
-      }
-
-      update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      break;
-    case RAISE:
-      if (record->event.pressed) {
-        layer_on(_RAISE);
-      } else {
-        layer_off(_RAISE);
-      }
-
-      update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      break;
-    case KANJI:
-      if (record->event.pressed) {
-        if (keymap_config.swap_lalt_lgui == false) {
-          register_code(KC_LNG2);
-        } else {
-          register_code16(A(KC_GRV));
-        }
-      } else {
-        unregister_code(KC_LNG2);
-      }
-      break;
-    #ifdef RGBLIGHT_ENABLE
-      case RGBRST:
-          if (record->event.pressed) {
-            eeconfig_update_rgblight_default();
-            rgblight_enable();
-          }
-        break;
-    #endif
-    default:
-      result = true;
-      break;
-  }
-
-  UPDATE_KEYMAP_STATUS();
-  return result;
-}
