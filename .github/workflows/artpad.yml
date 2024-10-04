@@ -64,6 +64,24 @@ jobs:
           dst: ./
           storage-branch: main
 
+  artpad-vial-keebd-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: artpad
+          keymap: vial-keebd
+          controller: helios
+          local-keyboard-path: artpad
+          output-dir: artpad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: artpad
+          dst: ./
+          storage-branch: main
+
   artpad-default-svlinky:
       runs-on: ubuntu-latest
   
