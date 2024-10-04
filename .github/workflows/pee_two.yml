@@ -10,17 +10,106 @@ on:
     - pee_two/**
 
 jobs:
+  pee-two-default-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: pee_two
+          keymap: default
+          controller: helios
+          local-keyboard-path: pee_two
+          output-dir: pee_two
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: pee_two
+          dst: ./
+          storage-branch: main
+
+  pee-two-via-helios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: pee_two
+          keymap: via
+          controller: helios
+          local-keyboard-path: pee_two
+          output-dir: pee_two
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: pee_two
+          dst: ./
+          storage-branch: main
 
   pee-two-vial-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@vial-qmk
+      - uses: keebd/build-qmk-fw@vial-qmk
         with:
           keyboard: pee_two
           keymap: vial
           controller: helios
+          local-keyboard-path: pee_two
+          output-dir: pee_two
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: pee_two
+          dst: ./
+          storage-branch: main
+
+  pee-two-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: pee_two
+          keymap: default
+          controller: svlinky
+          local-keyboard-path: pee_two
+          output-dir: pee_two
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: pee_two
+          dst: ./
+          storage-branch: main
+
+  pee-two-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: pee_two
+          keymap: via
+          controller: svlinky
+          local-keyboard-path: pee_two
+          output-dir: pee_two
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: pee_two
+          dst: ./
+          storage-branch: main
+
+  pee-two-vial-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: pee_two
+          keymap: vial
+          controller: svlinky
           local-keyboard-path: pee_two
           output-dir: pee_two
       - uses: sylvanld/action-storage@v1
