@@ -7,17 +7,19 @@ on:
     - main
     paths:
     - .github/workflows/yampad.yml
+    - yampad/**
 
 jobs:
-  yampad-default:
+  yampad-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: yampad
           keymap: default
+          controller: helios
           output-dir: yampad
       - uses: sylvanld/action-storage@v1
         with:
@@ -25,16 +27,52 @@ jobs:
           dst: ./
           storage-branch: main
 
-  yampad-default-helios:
+  yampad-via-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: yampad
+          keymap: via
+          controller: helios
+          local-keymap-path: yampad/keymaps/via
+          output-dir: yampad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: yampad
+          dst: ./
+          storage-branch: main
+
+  yampad-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: yampad
           keymap: default
-          controller: helios
+          controller: svlinky
+          output-dir: yampad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: yampad
+          dst: ./
+          storage-branch: main
+
+  yampad-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: yampad
+          keymap: via
+          controller: svlinky
+          local-keymap-path: yampad/keymaps/via
           output-dir: yampad
       - uses: sylvanld/action-storage@v1
         with:
