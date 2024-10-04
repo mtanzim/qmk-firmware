@@ -10,46 +10,12 @@ on:
     - satpad/**
 
 jobs:
-  satpad-default:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
-        with:
-          keyboard: satpad
-          keymap: default
-          output-dir: satpad
-          local-keyboard-path: satpad
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: satpad
-          dst: ./
-          storage-branch: main
-
-  satpad-via:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
-        with:
-          keyboard: satpad
-          keymap: via
-          output-dir: satpad
-          local-keyboard-path: satpad
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: satpad
-          dst: ./
-          storage-branch: main
-
   satpad-default-helios:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: satpad
           keymap: default
@@ -67,11 +33,47 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: medoix/build-qmk-fw@main
+      - uses: keebd/build-qmk-fw@main
         with:
           keyboard: satpad
           keymap: via
           controller: helios
+          output-dir: satpad
+          local-keyboard-path: satpad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: satpad
+          dst: ./
+          storage-branch: main
+
+  satpad-default-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: satpad
+          keymap: default
+          controller: svlinky
+          output-dir: satpad
+          local-keyboard-path: satpad
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: satpad
+          dst: ./
+          storage-branch: main
+
+  satpad-via-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@main
+        with:
+          keyboard: satpad
+          keymap: via
+          controller: svlinky
           output-dir: satpad
           local-keyboard-path: satpad
       - uses: sylvanld/action-storage@v1
