@@ -20,8 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-//#define USE_MATRIX_I2C
-
 #define QUICK_TAP_TERM 0
 #define TAPPING_TERM 100
 
@@ -37,3 +35,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VIK_GPIO_1        GP18
 #define VIK_GPIO_2        GP24
 #define VIK_WS2812_DI_PIN GP16
+
+// Cirque Pointer
+#define SPLIT_POINTING_ENABLE
+#define POINTING_DEVICE_RIGHT
+#define POINTING_DEVICE_ROTATION_90
+#define MASTER_RIGHT
