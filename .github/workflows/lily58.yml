@@ -113,3 +113,21 @@ jobs:
           src: lily58
           dst: ./
           storage-branch: main
+
+  lily58-vik-svlinky:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-qmk-fw@vial-qmk
+        with:
+          keyboard: lily58
+          keymap: vik
+          controller: svlinky
+          output-dir: lily58
+          local-keymap-path: lily58/keymaps/vik
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: lily58
+          dst: ./
+          storage-branch: main
