@@ -46,4 +46,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 100
 
+#undef OLED_FONT_H
 #define OLED_FONT_H "glcdfont.c"
