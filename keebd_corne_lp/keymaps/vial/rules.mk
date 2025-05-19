@@ -2,6 +2,7 @@ VIA_ENABLE          = yes
 VIAL_ENABLE         = yes
 VIAL_INSECURE       = yes
 VIALRGB_ENABLE      = yes
+RGB_MATRIX_ENABLE   = yes
 BACKLIGHT_ENABLE    = false
 RGBLIGHT_ENABLE     = yes
 LTO_ENABLE          = yes
