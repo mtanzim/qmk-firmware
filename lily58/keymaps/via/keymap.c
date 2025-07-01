@@ -178,17 +178,6 @@ void set_keylog(uint16_t keycode, keyrecord_t *record) {
   keylogs_str_idx++;
 }
 
-// const char *read_keylog(void) {
-//   return keylog_str;
-// }
-
-// const char *read_keylogs(void) {
-//   return keylogs_str;
-// }
-//new
-// #endif // OLED_ENABLE
-
-
 // OLED STUFF STARTS HERE
 // based on https://github.com/qmk/qmk_firmware/blob/master/keyboards/kyria/keymaps/j-inc/keymap.c
 
@@ -311,9 +300,8 @@ static void render_anim(void) {
 bool oled_task_user(void) {
   if (is_keyboard_master()) {
     render_anim(); 
-    oled_set_cursor(0, 0);                       // sets cursor to (row, column) using charactar spacing (5 rows on 128x32 screen, anything more will overflow back to the top)
-    oled_write_P(PSTR("mtanzim.com"), false);                    
-    oled_set_cursor(0, 1);
+              
+    oled_set_cursor(0, 0);
     // Host Keyboard Layer Status
     oled_write_P(PSTR("L:"), false);
     switch (get_highest_layer(layer_state)) {
@@ -332,6 +320,8 @@ bool oled_task_user(void) {
     default:
         oled_write_ln_P(PSTR("-"), false);
     }
+    oled_set_cursor(0, 4);                       // sets cursor to (row, column) using character spacing (5 rows on 128x32 screen, anything more will overflow back to the top)
+    oled_write_P(PSTR("mtanzim.com"), false);      
   } else {
       render_logo();
   }
