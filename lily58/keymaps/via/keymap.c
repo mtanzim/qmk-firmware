@@ -299,27 +299,31 @@ static void render_anim(void) {
 
 bool oled_task_user(void) {
   if (is_keyboard_master()) {
-    render_anim(); 
-  } else {
-    oled_write_ln_P(PSTR("mtanzim.com"), false);
+    render_anim();
+    oled_set_cursor(0, 0);
     oled_write_P(PSTR("L:"), false);
     switch (get_highest_layer(layer_state)) {
     case _QWERTY:
-        oled_write_ln_P(PSTR("0"), false);
+        oled_write_P(PSTR("0"), false);
         break;
     case _RAISE:
-        oled_write_ln_P(PSTR("1"), false);
+        oled_write_P(PSTR("1"), false);
         break;
     case _LOWER:
-        oled_write_ln_P(PSTR("2"), false);
+        oled_write_P(PSTR("2"), false);
         break;
     case _ADJUST:
-        oled_write_ln_P(PSTR("3"), false);
+        oled_write_P(PSTR("3"), false);
         break;
     default:
-        oled_write_ln_P(PSTR("-"), false);
+        oled_write_P(PSTR("-"), false);
     }
+  } else {
+    oled_write_ln_P(PSTR("mtanzim.com"), false);
   }
   return false;
 }
 #endif
+
+
+sfasfsdf
