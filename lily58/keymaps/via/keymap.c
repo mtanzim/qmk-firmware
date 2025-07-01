@@ -300,8 +300,7 @@ static void render_anim(void) {
 bool oled_task_user(void) {
   if (is_keyboard_master()) {
     render_anim(); 
-              
-    oled_set_cursor(0, 0);
+    oled_set_cursor(0, 1);
     // Host Keyboard Layer Status
     oled_write_P(PSTR("L:"), false);
     switch (get_highest_layer(layer_state)) {
@@ -320,7 +319,7 @@ bool oled_task_user(void) {
     default:
         oled_write_ln_P(PSTR("-"), false);
     }
-    oled_set_cursor(0, 4);                       // sets cursor to (row, column) using character spacing (5 rows on 128x32 screen, anything more will overflow back to the top)
+    oled_set_cursor(0, 3);                       // sets cursor to (row, column) using character spacing (5 rows on 128x32 screen, anything more will overflow back to the top)
     oled_write_P(PSTR("mtanzim.com"), false);      
   } else {
       render_logo();
